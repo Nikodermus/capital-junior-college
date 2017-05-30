@@ -1,0 +1,10 @@
+cd -> Get in directory
+~ -> Home
+mkdir -> Create directory
+touch -> Create file
+rm -> Delete file
+rmdir -> Delete directory
+history -> Latest commands
+ls -> Show directory content
+ls -a -> Show directory content including hidden files
+ls -d [d] -> Show all files/directories starting with D
