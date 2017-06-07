@@ -1,0 +1,88 @@
+body {
+    font-family: sans-serif;
+    width: 100%;
+    color: #fff;
+    overflow: hidden;
+    text-align: center;
+    max-height: 100vh;
+    text-align: center;
+    background-image: url(coming-soon-wallpaper.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #b02626;
+}
+
+.menu--container {
+    width: 100%;
+}
+
+.menu--container .menu {
+    float: right;
+    padding-right: 30px;
+}
+
+.menu--container .menu img {
+    height: 30px;
+    position: relative;
+    top: 8px;
+}
+
+.me--container .me--image {
+    width: 250px;
+    height: 250px;
+    margin: auto;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.me--container .me--image img {
+    width: 110%;
+}
+
+.about--container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.about--container>div {
+    width: calc(50% - 10px);
+    margin-left: 20px;
+    text-align: left;
+    float: left;
+}
+
+.about--container>div:last-child {
+    margin-left: 0;
+}
+
+.about--container li {
+    list-style: none;
+}
+
+footer {
+    height: 30px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    background: #b02626;
+    color: white;
+    font-weight: bold;
+    text-align: left;
+    overflow: hidden;
+}
+
+footer p img {
+    height: 50px;
+    position: relative;
+    top: 20px;
+}
+
+footer p {
+    position: relative;
+    top: -45px;
+    padding-left: 15px;
+}
