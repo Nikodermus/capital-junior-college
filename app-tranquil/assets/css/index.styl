@@ -1,0 +1,267 @@
+html
+    font-family font96003, sans-serif
+    background #232323
+    height 100%
+    min-height 100%
+    color #424242
+    *
+        box-sizing border-box
+.app-ui
+    display block
+    overflow hidden
+    height 620px
+    width 360px
+    background white
+    box-shadow 2px 2px 2px 2px black
+    margin auto
+    margin-bottom 1em
+    &#main-tab
+    
+        nav
+        /*! Nav Styles */
+            height 40px
+            padding 2px 10px
+            text-align center
+            position relative
+            top 0
+            left 0
+            right unset
+            bottom unset
+            width 100%
+            border-bottom 1px solid #f5f5f5
+            background white
+            overflow hidden
+            button
+                background transparent 
+                border 0
+                height 100%
+                &:first-of-type
+                    float left
+                &:last-of-type
+                    float right
+                i
+                    color #f2f2f2
+                    font-size 30px
+            div
+                position absolute
+                margin auto
+                width 100%
+            img
+                height 30px
+                width auto
+                max-width calc(100% - 100px)
+        
+        
+        
+        
+        
+        
+        
+    
+        ul.slider
+        /*! Slider*/
+            width 100%
+            height 450px
+            overflow hidden
+            white-space nowrap
+            li
+                display inline-block
+                margin 10px
+                width 340px
+                height 430px
+                figure.profile
+                    width 100%
+                    height 100%
+                    text-align center
+                    border 1px solid #f2f2f2
+                    position relative
+                    border-radius 10px
+                    perspective 100px
+                    &::after
+                        content ""
+                        width calc(100% - 20px)
+                        position absolute
+                        bottom -10px
+                        left 0
+                        right unset
+                        top unset
+                        background #f2f2f2
+                        height 0
+                        border-top 12px solid #f2f2f2
+                        border-left 10px solid white
+                        border-right 10px solid white
+                        border-bottom 0
+                    img
+                        display inline-block
+                        height calc(100% - 64px)
+                        max-width 100%
+                        object-fit cover
+                    figcaption
+                        margin 10px
+                        height 65px
+                        width 100%
+                        >*
+                            text-align left
+                            padding-left 1rem
+                        h1
+                            font-size 1.2rem
+                            font-weight 600
+                            .age::before
+                                content ", "
+
+
+                        p
+                            font-size 1rem
+                            margin-bottom 10px
+
+               
+        article#ui-actions
+        /*! Buttons */
+            text-align center
+            margin-top 20px
+            button
+                border-radius 50%
+                border 10px solid #f2f2f2
+                display inline-block
+                margin-right -1.3em
+                background white
+                vertical-align top
+                &:last-of-type
+                    margin-right 0
+                &.large
+                    width 90px
+                    height 90px
+                    i
+                        font-size 35px
+                &.small
+                    width 65px
+                    height 65px
+                    i
+                        font-size 20px
+                i.fa-
+                    &undo
+                        color #FFCA01
+                    &times
+                        color #FD2C7A
+                    &heart
+                        color #14E29A
+                    &star
+                        color #169AE4
+
+
+
+    &#matches-tab
+        nav
+            text-align center
+            position relative
+            padding 2px 10px
+            overflow hidden
+            width 100%
+            background white
+            height 40px
+            border-bottom 1px solid #f5f5f5
+            button
+                display inline-block
+                background transparent 
+                border 0
+                height 100%
+                i
+                    color #FD2C7A
+                    font-size 30px
+                &.ui-settings
+                    position absolute
+                    left 0
+                    top 2px
+                    right unset
+                    bottom unset
+                    i
+                        color #f2f2f2
+        article
+            padding 1rem .5rem
+            border-bottom 1px solid #f2f2f2
+            margin .5rem .5rem 1rem .5rem
+            border-radius 10px
+            box-shadow 0 3px 4px -2px  #f2f2f2
+            h1
+                    font-size 10px
+                    font-weight bolder
+                    margin-bottom .5rem
+                    color #FD2C7A
+                    text-align left
+                    text-transform uppercase
+                    vertical-align middle
+                    span
+                        background #FD2C7A
+                        border-radius 50%
+                        font-size 8px
+                        height 12px
+                        display inline-block
+                        width 12px
+                        line-height 12px
+                        font-weight lighter
+                        color white
+                        text-align center
+                        vertical-align middle
+                        transform translateY(-2px)
+            &#matches
+                ul
+                    white-space nowrap
+                    font-size 0
+                    width 100%
+                    text-align left
+                    li
+                        display inline-block
+                        font-size 1rem
+                        margin-right 1rem
+                        img
+                            width 60px
+                            border-radius 50%
+                        figcaption
+                            h2
+                                text-align center
+                                font-size 12px
+                                font-weight bolder
+            &#chat
+                ul
+                    li
+                        margin-bottom 1em
+                        &:last-of-type
+                            margin-bottom 0
+                        figure
+                            font-size 0
+                            text-align left
+                            *
+                                display inline-block
+                                font-size 1rem
+                            img
+                                width 60px
+                                border-radius 50%
+                            figcaption
+                                margin-left 1em
+                                vertical-align top
+                                position relative
+                                top -50%
+                                transform translateY(50%)
+                                h2
+                                    font-weight bolder
+                                    width 100%
+                                p
+                                    font-size 10px
+                                    color gray
+                                    i
+                                        font-size 8px
+                                        &::before
+                                            margin-right .5em
+
+
+
+@media screen and (min-width: 720px)
+    html
+        text-align center
+        body
+            position relative
+            top 50%
+            transform translateY(-50%)
+        .app-ui
+            display inline-block
+            vertical-align top

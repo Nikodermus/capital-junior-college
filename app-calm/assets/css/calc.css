@@ -1,0 +1,112 @@
+html {
+  background: #232323;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  color: #fff;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+* {
+  box-sizing: inherit;
+  transition: all 0.3s ease;
+}
+*:hover {
+  transition: all 0.3s ease;
+}
+body {
+  font-size: inherit;
+  height: 561.25px;
+  width: 360px;
+  background-image: url("../img/background-calc.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+  box-shadow: 0px 0px 10px 2px #fff;
+  margin: auto;
+  position: relative;
+  left: unset;
+  right: unset;
+  bottom: unset;
+  border-top: 1px solid #af164e;
+  overflow: hidden;
+}
+body > div {
+  background: #202020;
+  padding: 0.25rem 1rem;
+  height: 110px;
+}
+body > div input {
+  background: transparent;
+  border: 0;
+  width: 100%;
+  font-size: 0.75rem;
+  color: #fff;
+  text-align: right;
+  opacity: 0.7;
+}
+body > div p {
+  padding: 0.5rem 0;
+  font-size: 3.8125rem;
+  text-align: right;
+}
+body ul li {
+  position: relative;
+  background: transparent;
+}
+body ul li::after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+body ul li:hover {
+  background: rgba(35,35,35,0.5);
+  cursor: pointer;
+}
+body ul li button {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 1.7rem;
+  font-weight: 100;
+}
+body ul#functions {
+  width: 75%;
+}
+body ul#functions li {
+  width: 33.33333%;
+  float: left;
+}
+body ul#digits {
+  width: 75%;
+}
+body ul#digits li {
+  width: 33.33333%;
+  float: left;
+}
+body ul#digits li.zero {
+  width: 66.6666%;
+}
+body ul#digits li.zero button {
+  text-align: left;
+  padding-left: calc(25% - 0.25rem);
+}
+body ul#digits li.zero::after {
+  padding-bottom: 50%;
+}
+body ul#operations {
+  position: absolute;
+  right: 0;
+  top: 110px;
+  left: unset;
+  bottom: unset;
+  height: 449px;
+  width: 25%;
+  background: rgba(35,35,35,0.5);
+}

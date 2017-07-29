@@ -1,0 +1,88 @@
+html {
+  background: #232323;
+  border: 2px solid #124fea;
+  min-height: 200%;
+  height: 200%;
+  color: #fff;
+}
+body {
+  position: relative;
+  border: 10px solid #0ff;
+  height: 100%;
+  margin: 0;
+  position: relative;
+  top: 110px;
+  background: #808080;
+  padding-bottom: 100px;
+}
+header {
+  width: 100%;
+  height: 100px;
+  width: calc(100% - 10px);
+  background: #ffa500;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: unset;
+  border: 5px solid #f00;
+  right: unset;
+}
+header nav a,
+header nav ul,
+header nav ul >li {
+  display: inline-block;
+  background: #008000;
+  height: 100px;
+  width: 100px;
+  margin: 0;
+}
+header nav ul {
+  padding: 0;
+}
+header nav ul li {
+  list-style: none;
+  margin-left: -1em;
+}
+section h1 {
+  margin-bottom: 10vw;
+  line-height: 0;
+}
+section div {
+  border: 1vw solid #800080;
+  background: #ff0;
+  height: 100px;
+  box-sizing: border-box;
+}
+section div[class^="hola"] {
+  float: left;
+}
+section div[class^="hola"].hola1 {
+  width: 35%;
+  margin-right: 10%;
+}
+section div[class^="hola"].hola2 {
+  width: 55%;
+}
+section div[class^="adios"] {
+  display: inline-block;
+}
+section div[class^="adios"].adios1 {
+  width: 35%;
+  margin-right: calc(10% - 0.25em);
+}
+section div[class^="adios"].adios2 {
+  width: calc(55%);
+  margin-right: -0.25em;
+}
+footer {
+  position: absolute;
+  bottom: -130px;
+  left: -10px;
+  width: 100%;
+  width: 100%;
+  top: unset;
+  right: unset;
+  background: #800080;
+  min-height: 100px;
+  border: 10px solid #ffd700;
+}

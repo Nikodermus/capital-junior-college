@@ -1,0 +1,73 @@
+html
+    background #232323
+    display flex
+    justify-content center
+    height 100%
+    width 100%
+    box-sizing border-box
+    font-family sans-serif
+*
+    box-sizing inherit
+    transition all 0.3s ease
+    &:hover
+        transition all 0.3s ease
+body
+    height 455px
+    width 360px
+    margin auto
+    overflow hidden
+    background #f4f4f4
+    position relative
+    p#result
+        width 75%
+        width calc(75% - 16px)
+        margin-left 8px
+        text-align right
+        padding 1rem
+        height 80px
+        color #3f3743
+        font-size 3rem
+        line-height 80px
+    ul
+        padding-top 4px
+        button
+            background white
+            box-shadow 2px 2px 6px 1px #333
+            border-radius 8px
+            border 1px solid white
+            height 80px
+            width 80px
+            font-size 2rem
+            margin 4px
+            &:hover
+                filter brightness(.8)
+        &:hover
+            background #f2f2f2
+        &#digits
+            transform translateX(4px)
+            margin-top 8px
+            width 75%
+            font-size 0
+            li
+                display inline-block
+                    
+
+        &#operations
+            width 25%
+            position absolute
+            top 0
+            right 0
+            left unset
+            bottom unset
+            li
+                button
+                    color white
+                    background #e34c26
+                &:last-child
+                    position relative
+                    top -88px
+                    left -90px
+                
+
+    
+
