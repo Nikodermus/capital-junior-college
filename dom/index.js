@@ -1,0 +1,1 @@
+var html_obj = document;
