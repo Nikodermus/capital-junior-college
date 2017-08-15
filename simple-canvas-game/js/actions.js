@@ -6,8 +6,8 @@ window.onload = function () {
     var container = document.getElementById('CanvasContainer');
 
     //Set canvas size as window size
-    canvas.width = container.clientWidth;
-    canvas.height = container.clientHeight;
+    canvas.width = container.clientWidth - 128;
+    canvas.height = container.clientHeight - 128;
     container.appendChild(canvas);
 
     // Hero image
@@ -39,19 +39,32 @@ window.onload = function () {
     var hero = {
         speed: 256,
         x: 0,
-        y: 0
+        y: 0,
+        width: 38,
+        height: 56
     };
     var catchable = {
         x: 0,
-        y: 0
+        y: 0,
+        width: 40,
+        height: 40
     };
+
+    //Enemy prototype
     var monster = {
-        speed: 30,
+        speed: 0,
         x: 0,
         y: 0,
-        width: 32,
-        height: 32
+        width: 0,
+        height: 0
     };
+
+    var caco_demon = Object.create(monster);
+    var caco_demon = Object.create(monster);
+    var caco_demon = Object.create(monster);
+    var caco_demon = Object.create(monster);
+    var caco_demon = Object.create(monster);
+
     var total_catches = 0;
 
     // Handle keyboard controls
@@ -114,6 +127,11 @@ window.onload = function () {
 
     // Draw everything
     function render() {
+
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+
         if (hero_ready) {
             ctx.drawImage(hero_image, hero.x, hero.y);
         }
@@ -129,7 +147,7 @@ window.onload = function () {
         ctx.font = "24px Helvetica";
         ctx.textAlign = "left";
         ctx.textBaseline = "top";
-        ctx.fillText("Monsters caught: " + total_catches, 32, 32);
+        ctx.fillText("Souls collected: " + total_catches, 32, 32);
     }
 
     function main() {

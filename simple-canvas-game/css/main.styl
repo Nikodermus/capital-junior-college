@@ -1,10 +1,75 @@
 html
 body
-#CanvasContainer
+    box-sizing border-box
     width 100%
     height 100%
     background url('../img/background.png')
     background-size 80px 80px
     background-repeat  repeat
+    overflow hidden
+    border url('../img/border-top.png') 128
+#CanvasContainer
+    width 100%
+    height 100%  
     canvas
         background transparent
+        position absolute
+        top 64px
+        left 64px
+.corner
+    width 64px
+    height 64px
+    position absolute
+    &:nth-of-type(1)
+        top 0
+        left 0
+    &:nth-of-type(2)
+        top 0
+        right 0
+    &:nth-of-type(3)
+        bottom 0
+        left 0
+    &:nth-of-type(4)
+        bottom 0
+        right 0
+ 
+.border
+    position absolute
+    background gray
+    text-align center
+    &:nth-of-type(even)
+        width 64px
+        height 100%
+        top 0
+    &:nth-of-type(odd)
+        height 64px
+        width 100%
+        left 0
+    &:nth-of-type(1)
+        background url('../img/border-top.png')
+        top 0
+    &:nth-of-type(2)
+        background url('../img/border-right.png')
+        right 0
+        background-position center right
+    &:nth-of-type(3)
+        background url('../img/border-bottom.png')
+        bottom 0
+    &:nth-of-type(4)
+        background url('../img/border-left.png')
+        left 0
+    .panel
+        width calc(100% - 140px)
+        height 80%
+        background url('../img/panel.png')
+        margin auto
+        margin-top 6px
+        position relative
+        > div
+            width 50%
+            position absolute
+            top 0
+            .left
+                left 0
+            .right
+                right 0
