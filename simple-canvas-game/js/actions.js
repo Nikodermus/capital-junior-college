@@ -34,7 +34,14 @@ window.onload = function () {
     };
     catchable_image.src = "./img/lost_soul.png";
 
-
+    var game = {
+        playable: true,
+        lifes: 3,
+        killable: true,
+        health: 100,
+        damage: 40,
+        weapon_size: 20
+    }
 
     var hero = {
         speed: 256,
@@ -56,7 +63,8 @@ window.onload = function () {
         x: 0,
         y: 0,
         width: 0,
-        height: 0
+        height: 0,
+        health: 100
     };
 
     var caco_demon = Object.create(monster);
@@ -142,12 +150,7 @@ window.onload = function () {
             ctx.drawImage(catchable_image, catchable.x, catchable.y);
         }
 
-        // Score
-        ctx.fillStyle = "rgb(250, 250, 250)";
-        ctx.font = "24px Helvetica";
-        ctx.textAlign = "left";
-        ctx.textBaseline = "top";
-        ctx.fillText("Souls collected: " + total_catches, 32, 32);
+
     }
 
     function main() {

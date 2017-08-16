@@ -13,6 +13,10 @@
 </head>
 
 <body>
+    <figure class="top">
+        <img src="./img/pause_icon.png" alt="">
+
+    </figure>
     <div class="border">
     </div>
     <div class="border"></div>
@@ -20,10 +24,22 @@
         <div class="panel">
 
             <div class="left">
-                <img src="./img/lost_soul.png" alt="">
-                <p></p>
+                <img src="./img/lost_soul.gif" alt="">
+                <span id="SoulsCount">00</span>
             </div>
-            <div class="right"></div>
+            <div class="right">
+
+                <figure class="lives" id="LifeCount">
+                    <img src="./img/life.png" alt="">
+                    <img src="./img/life.png" alt="">
+                    <img src="./img/life.png" alt="">
+                </figure>
+                <button disabled="disabled" id="PauseGame"> <div>II</div>       </button>
+            </div>
+            <figure>
+                <img src="./img/3_lifes.gif" alt="" id="PlayerStatus">
+                <img src="./img/yellow.png" alt="" id="PowerUp">
+            </figure>
         </div>
 
     </div>
