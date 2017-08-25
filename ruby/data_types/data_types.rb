@@ -20,11 +20,11 @@ def puts_my_integer_as_string
 end
 
 puts "Integers"
-get_my_integer()
+get_my_integer
 set_my_integer(14)
-puts_my_integer()
-class_of_integer()
-puts_my_integer_as_string()
+puts_my_integer
+class_of_integer
+puts_my_integer_as_string
 
 
 
@@ -51,11 +51,11 @@ def puts_my_string_as_string
 end
 
 puts "strings"
-get_my_string()
+get_my_string
 set_my_string("Nico")
-puts_my_string()
-class_of_string()
-puts_my_string_as_string()
+puts_my_string
+class_of_string
+puts_my_string_as_string
 
 
 
@@ -81,11 +81,11 @@ def puts_my_array_as_string
 end
 
 puts "arrays"
-get_my_array()
+get_my_array
 set_my_array(["yay", 6])
-puts_my_array()
-class_of_array()
-puts_my_array_as_string()
+puts_my_array
+class_of_array
+puts_my_array_as_string
 
 
 
@@ -111,11 +111,11 @@ def puts_my_hash_as_string
 end
 
 puts "hashs"
-get_my_hash()
+get_my_hash
 set_my_hash({sure: "whatever", ok: 13})
-puts_my_hash()
-class_of_hash()
-puts_my_hash_as_string()
+puts_my_hash
+class_of_hash
+puts_my_hash_as_string
 
 
 
@@ -141,11 +141,11 @@ def puts_my_float_as_string
 end
 
 puts "floats"
-get_my_float()
+get_my_float
 set_my_float(6.13)
-puts_my_float()
-class_of_float()
-puts_my_float_as_string()
+puts_my_float
+class_of_float
+puts_my_float_as_string
 
 
 
@@ -173,11 +173,11 @@ def puts_my_true_as_string
 end
 
 puts "trues"
-get_my_true()
+get_my_true
 set_my_true(true)
-puts_my_true()
-class_of_true()
-puts_my_true_as_string()
+puts_my_true
+class_of_true
+puts_my_true_as_string
 
 
 
@@ -205,11 +205,11 @@ def puts_my_false_as_string
 end
 
 puts "falses"
-get_my_false()
+get_my_false
 set_my_false(false)
-puts_my_false()
-class_of_false()
-puts_my_false_as_string()
+puts_my_false
+class_of_false
+puts_my_false_as_string
 
 
 
@@ -240,17 +240,17 @@ def puts_my_nil_as_string
 end
 @nil2
 puts "nils"
-get_my_nil()
+get_my_nil
 set_my_nil(@nil2)
-puts_my_nil()
-class_of_nil()
-puts_my_nil_as_string()
+puts_my_nil
+class_of_nil
+puts_my_nil_as_string
 
 def by_console
     puts ARGV[0]
 end
 
-by_console()
+by_console
 
 
 
