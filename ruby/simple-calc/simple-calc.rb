@@ -5,6 +5,7 @@ def sum(a, b)
     a = a.to_f if a == a.to_i.to_s or a == a.to_f.to_s
     b = b.to_f if b == b.to_i.to_s or b == b.to_f.to_s
     if a.class == Float and b.class == Float
+        ^(\+|\-)?[0-9]+((\.)?[0-9]+)?$
         return "Result is #{a + b}"
     end
     "Values not correct"
@@ -23,7 +24,7 @@ end
 
 def operation_2
     puts "Enter numbers separated by a comma"
-    opts_array gets.chomp
+    opts_array = gets.chomp
     
     
 end
