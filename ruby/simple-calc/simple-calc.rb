@@ -1,23 +1,18 @@
 system "clear"
 @input = nil
-
-def sum(a, b)
-    a = a.to_f if a == a.to_i.to_s or a == a.to_f.to_s
-    b = b.to_f if b == b.to_i.to_s or b == b.to_f.to_s
-    if a.class == Float and b.class == Float
-        ^(\+|\-)?[0-9]+((\.)?[0-9]+)?$
-        return "Result is #{a + b}"
-    end
-    "Values not correct"
-end
+@my_reg = /^(\+|\-)?[0-9]+((\.)?[0-9]+)?$/
 
 def operation_1
     system "clear"
     puts "First"
-    op1 = gets.chomp
+    op1 = gets.chomp.gsub ' ', ''
     puts "Second"
-    op2 = gets.chomp
-    puts sum(op1,op2)
+    op2 = gets.chomp.gsub ' ', ''
+    if(!op1.scan(@my_reg).empty? && !op2.scan(@my_reg).empty?)
+        puts "Result is #{op1.to_f + op2.to_f}"
+    else
+        puts "Invalid data"
+    end
     puts "Press any key to continue"
     gets.chomp
 end
@@ -25,8 +20,178 @@ end
 def operation_2
     puts "Enter numbers separated by a comma"
     opts_array = gets.chomp
-    
-    
+    opts_array = opts_array.gsub ' ', ''
+    opts_array = opts_array.split ','
+    @use_array = []
+    @invalid_array = []
+    for i in opts_array
+        if @my_reg.match(i)
+            @use_array.push(i)
+        else 
+            @invalid_array.push(i)
+        end
+    end
+    @sum = 0
+    for i in @use_array
+        @sum += i.to_f
+    end
+    puts "Sum equals to #{@sum}"
+    puts "Invalid entries #{@invalid_array}"
+    puts "Press any key to continue"
+    gets.chomp
+end
+def operation_3
+    system "clear"
+    puts "First"
+    op1 = gets.chomp.gsub ' ', ''
+    puts "Second"
+    op2 = gets.chomp.gsub ' ', ''
+    if(!op1.scan(@my_reg).empty? && !op2.scan(@my_reg).empty?)
+        puts "Result is #{op1.to_f - op2.to_f}"
+    else
+        puts "Invalid data"
+    end
+    puts "Press any key to continue"
+    gets.chomp
+end
+
+def operation_4
+    puts "Enter numbers separated by a comma"
+    opts_array = gets.chomp
+    opts_array = opts_array.gsub ' ', ''
+    opts_array = opts_array.split ','
+    @use_array = []
+    @invalid_array = []
+    for i in opts_array
+        if @my_reg.match(i)
+            @use_array.push(i)
+        else 
+            @invalid_array.push(i)
+        end
+    end
+    @sum = 0
+    for i in @use_array
+        @sum -= i.to_f
+    end
+    puts "Sum equals to #{@sum}"
+    puts "Invalid entries #{@invalid_array}"
+    puts "Press any key to continue"
+    gets.chomp
+end
+def operation_5
+    system "clear"
+    puts "First"
+    op1 = gets.chomp.gsub ' ', ''
+    puts "Second"
+    op2 = gets.chomp.gsub ' ', ''
+    if(!op1.scan(@my_reg).empty? && !op2.scan(@my_reg).empty?)
+        puts "Result is #{op1.to_f * op2.to_f}"
+    else
+        puts "Invalid data"
+    end
+    puts "Press any key to continue"
+    gets.chomp
+end
+
+def operation_6
+    puts "Enter numbers separated by a comma"
+    opts_array = gets.chomp
+    opts_array = opts_array.gsub ' ', ''
+    opts_array = opts_array.split ','
+    @use_array = []
+    @invalid_array = []
+    for i in opts_array
+        if @my_reg.match(i)
+            @use_array.push(i)
+        else 
+            @invalid_array.push(i)
+        end
+    end
+    @sum = 0
+    for i in @use_array
+        @sum *= i.to_f
+    end
+    puts "Sum equals to #{@sum}"
+    puts "Invalid entries #{@invalid_array}"
+    puts "Press any key to continue"
+    gets.chomp
+end
+def operation_7
+    system "clear"
+    puts "First"
+    op1 = gets.chomp.gsub ' ', ''
+    puts "Second"
+    op2 = gets.chomp.gsub ' ', ''
+    if(!op1.scan(@my_reg).empty? && !op2.scan(@my_reg).empty?)
+        puts "Result is #{op1.to_f / op2.to_f}"
+    else
+        puts "Invalid data"
+    end
+    puts "Press any key to continue"
+    gets.chomp
+end
+
+def operation_8
+    puts "Enter numbers separated by a comma"
+    opts_array = gets.chomp
+    opts_array = opts_array.gsub ' ', ''
+    opts_array = opts_array.split ','
+    @use_array = []
+    @invalid_array = []
+    for i in opts_array
+        if @my_reg.match(i)
+            @use_array.push(i)
+        else 
+            @invalid_array.push(i)
+        end
+    end
+    @sum = 0
+    for i in @use_array
+        @sum = @sum / i.to_f
+    end
+    puts "Sum equals to #{@sum}"
+    puts "Invalid entries #{@invalid_array}"
+    puts "Press any key to continue"
+    gets.chomp
+end
+def operation_9
+    system "clear"
+    puts "First"
+    op1 = gets.chomp.gsub ' ', ''
+    puts "Second"
+    op2 = gets.chomp.gsub ' ', ''
+    if(!op1.scan(@my_reg).empty? && !op2.scan(@my_reg).empty?)
+        puts "Result is #{op1.to_f ** op2.to_f}"
+    else
+        puts "Invalid data"
+    end
+    puts "Press any key to continue"
+    gets.chomp
+end
+
+def operation_10
+    puts "Enter numbers separated by a comma"
+    opts_array = gets.chomp
+    opts_array = opts_array.gsub ' ', ''
+    opts_array = opts_array.split ','
+    @use_array = []
+    @invalid_array = []
+    for i in opts_array
+        if @my_reg.match(i)
+            @use_array.push(i)
+        else 
+            @invalid_array.push(i)
+        end
+    end
+    @sum = @use_array[0].to_f
+    n = 1
+    for n in @use_array
+        @sum **= n.to_f
+    end
+    puts "Sum equals to #{@sum}"
+    puts "Invalid entries #{@invalid_array}"
+    puts "Press any key to continue"
+    gets.chomp
 end
 
 def menu
@@ -56,7 +221,15 @@ while @input != 0 do
   
     case @input
         when 1 then operation_1
-        when 2 then 
+        when 2 then operation_2
+        when 3 then operation_3
+        when 4 then operation_4
+        when 5 then operation_5
+        when 6 then operation_6
+        when 7 then operation_7
+        when 8 then operation_8
+        when 9 then operation_9
+        when 10 then operation_10
         else puts "Goodbye fella!"
     end
 end
