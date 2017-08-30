@@ -1,6 +1,6 @@
 system "clear"
 @input = nil
-@my_reg = /^(\+|\-)?[0-9]+((\.)?[0-9]+)?$/
+@my_reg = /\a(\+|\-)?[0-9]+((\.)?[0-9]+)?\z/
 
 def operation_1
     system "clear"

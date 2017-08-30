@@ -3,12 +3,13 @@
 @my_string_3 = "4_f@colllege.com "
 @my_string_4 = "ad-f@college.com"
 @my_string_5 = "as3+´+@college.com"
-@my_regex = /[a-ZA-Z0-9]*@college.com/
-puts "#{@my_string_1.scan(@my_regex)}"
-puts "#{@my_string_2.scan(@my_regex)}"
-puts "#{@my_string_3.scan(@my_regex)}"
-puts "#{@my_string_4.scan(@my_regex)}"
-puts "#{@my_string_5.scan(@my_regex)}"
+@my_regex = /[\d\w-]*@college.com/
+@second_reg = /\A.*@(college.com)?>\z/
+puts "1 #{@my_string_1.scan(@second_reg)}"
+puts "2 #{@my_string_2.scan(@my_regex)}"
+puts "3 #{@my_string_3.scan(@my_regex)}"
+puts "4 #{@my_string_4.scan(@my_regex)}"
+puts "5 #{@my_string_5.scan(@my_regex)}"
 
 @my_file = ["fijgle.png","filase.jpeg","fil12e.gif","fi-ale.jpg.pdf"]
 @file_regex = /.*\.png$|.*\.jpg$|.*\.jpeg$|.*\.gif$|.*\.bmp$|.*\.svg$/
