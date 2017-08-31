@@ -1,12 +1,9 @@
 class Product
-    attr_accessor :name, :price #Read and Write access
-    attr_writer :color
-    attr_reader :id
-    def initialize(name, price)
-        @name = name
-        @price = 100
-        @color = price
-        @id = 129048
+    attr_accessor :name, :price, :weight #Read and Write access
+    def initialize(opts = {})
+        @name = opts[:name] ? opts[:name] : "NN"
+        @price = opts[:price]
+        @weight = opts[:weight]
     end
 
     #attr_accessor does both
@@ -20,15 +17,9 @@ class Product
             @price = value
         end
 end
-@papa = Product.new("Criolla", 100)
-puts @papa.name
-puts @papa.price
-@papa.price = 200
-puts @papa.price
-@papa.color = "red"
-puts @papa.id
 
-@papa_peruana = Product.new("Peruana", 400)
-@papa_peruana.class
-@papa_peruana.name
-@papa_peruana.price
+@papa_peruana = Product.new(name: "Papa Peruana", price: 500, weight: 200)
+puts @papa_peruana.class
+puts @papa_peruana.name
+puts @papa_peruana.price
+puts @papa_peruana.weight
