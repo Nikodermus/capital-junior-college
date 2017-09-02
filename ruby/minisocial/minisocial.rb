@@ -1,4 +1,5 @@
-require "faker"
+require 'rubygems'
+require 'faker'
 
 class Post
     attr_accessor :body
@@ -14,9 +15,9 @@ end
 class User
     attr_accessor :email, :password, :nickname, :posts
     def initialize(opts = {})
-        @email_reg = /\A[\w\d]+@[\w\d]+\.[\w\d]+\z/
-        @pass_reg = /\A.{8}.*\z/
-        @email = opts[:email].to_s.scan(@email_reg).any? ? opts[:email] : abort("Email not validate") #Throw an exception raise(Exception.new("Nel carnel"))
+        @email_reg = /\A\p{Alnum}+@\p{Alnum}+\.com\z/
+        @pass_reg = /\A.{8,}\z/
+        @email = opts[:email].to_s.scan(@email_reg).any? ? opts[:email] : abort("Email not validate #{opts[:email]}") #Throw an exception raise(Exception.new("Nel carnel"))
         @password = opts[:password].to_s.scan(@pass_reg).any? ? opts[:password] : abort("Password not validate") 
         @nickname = opts[:nickname].to_s 
         @posts = opts[:posts].is_a?(Array) ? opts[:posts] : []
@@ -37,8 +38,43 @@ class User
         self.posts.each do |post|
             post.nice_print
         end
+        gets.chomp
     end
 end
+
+def seed
+    #Create 1 thousand users
+    1000.times do
+        @new_user = {
+            nickname:  "",
+            email: "",
+            password:  "",
+            posts: []
+        }
+        @new_user[:nickname] =  Faker::Name.name.to_s.downcase.gsub(/\W/,'')
+        @new_user[:email] = "#{@new_user[:nickname]}@#{Faker::GameOfThrones.house.downcase.gsub(/\W/,'')}.com"
+        @new_user[:password] =  (0...8).map { (65 + rand(26)).chr }.join
+        @new_user[:posts] = []
+        
+        system "clear"
+        puts "LOADI2NG #{@counter/2 == 0 ? "⠋" : "⠼"} ⸨#{'I'*(@counter/10).to_i}#{'░'*(100-@counter/10).to_i}⸩"
+        puts "Creating: #{@new_user[:email]}"
+        puts "Almost ready" if @counter > 800
+        1000.times do
+            @new_user[:posts] << Post.new({body: Faker::StarWars.quote})
+        end
+        create_user(@new_user)
+    end
+end
+
+def create_user(opts = {})
+    if !@users[opts[:email]]
+        @counter += 1
+       
+        @users[opts[:email]] = User.new(opts)
+    end
+end
+
 
 def menu_log
     system "clear"
@@ -52,14 +88,14 @@ def menu_log
     puts ' '*7 + " 2. Log In"
     puts ' '*7 + " 0. Exit"
 end
-
+1
 def menu_user
     system "clear"
     puts "–"*60
     puts "    Nikodermus Network    ".rjust(38, '#') + '#'*22
     puts "   Welcome #{@current_user.nickname.length <= 0 ?
                     @current_user.email : 
-                    @current_user.nickname}"
+                    @current_user.nickname}   "
             .rjust(31,'#') + '#'* 29
     puts "–"*60
     puts ""
@@ -70,6 +106,7 @@ def menu_user
     puts ' '*7 + " 4. Log out"
     puts ' '*7 + " 0. Exit"
 end
+
 
 def sign_up
     system "clear"
@@ -100,7 +137,6 @@ def sign_up
 
     @users[email] = User.new(email: email, password: pass, nickname: nickname)
     @current_user = @users[email]
-    @users[email].inspect
     
 end
 
@@ -174,9 +210,10 @@ end
 
 @input = nil
 @users = {}
-@users["n@d.c"] =  User.new(email: "n@d.c", password: "12345678", nickname: "Dermus")
-@current_user = @users["n@d.c"]
-
+@users["n@d.com"] =  User.new(email: "n@d.com", password: "12345678", nickname: "Dermus")
+@current_user = @users["n@d.com"]
+@counter = 0
+seed
 
 while @input != 0 do
     if @current_user
