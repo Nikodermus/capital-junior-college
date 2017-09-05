@@ -1,46 +1,9 @@
 require 'rubygems'
 require 'faker'
+require './lib/post'
+require './lib/user'
+require './lib/menu'
 
-class Post
-    attr_accessor :body
-    def initialize(opts = {})
-    @body = opts[:body].to_s
-    end
-
-    def nice_print
-        puts "    · #{self.body}"
-    end
-end
-
-class User
-    attr_accessor :email, :password, :nickname, :posts
-    def initialize(opts = {})
-        @email_reg = /\A\p{Alnum}+@\p{Alnum}+\.com\z/
-        @pass_reg = /\A.{8,}\z/
-        @email = opts[:email].to_s.scan(@email_reg).any? ? opts[:email] : abort("Email not validate #{opts[:email]}") #Throw an exception raise(Exception.new("Nel carnel"))
-        @password = opts[:password].to_s.scan(@pass_reg).any? ? opts[:password] : abort("Password not validate") 
-        @nickname = opts[:nickname].to_s 
-        @posts = opts[:posts].is_a?(Array) ? opts[:posts] : []
-    end
-
-    #Create new post and add it to the user's post array
-    #parameters: opts = {}, opts[:body]
-    def create_post(opts = {})
-        self.posts << Post.new(opts)
-        
-    end
-
-    def authenticate(submited)
-        self.password == submited
-    end
-
-    def nice_print_post
-        self.posts.each do |post|
-            post.nice_print
-        end
-        gets.chomp
-    end
-end
 
 def seed
     #Create 1 thousand users
@@ -57,7 +20,8 @@ def seed
         @new_user[:posts] = []
         
         system "clear"
-        puts "LOADI2NG #{@counter/2 == 0 ? "⠋" : "⠼"} ⸨#{'I'*(@counter/10).to_i}#{'░'*(100-@counter/10).to_i}⸩"
+        system "clear"
+        puts "LOADING #{@counter/2 == 0 ? "⠋" : "⠼"} ⸨#{'I'*(@counter/10).to_i}#{'░'*(100-@counter/10).to_i}⸩"
         puts "Creating: #{@new_user[:email]}"
         puts "Almost ready" if @counter > 800
         1000.times do
@@ -74,39 +38,6 @@ def create_user(opts = {})
         @users[opts[:email]] = User.new(opts)
     end
 end
-
-
-def menu_log
-    system "clear"
-    puts "–"*60
-    puts "    Nikodermus Network    ".rjust(38, '#') + '#'*22
-    puts "   Welcome   ".rjust(31,'#') + '#'* 29
-    puts "–"*60
-    puts ""
-    puts "Menu:".rjust(10, ' ')
-    puts ' '*7 + " 1. Register"
-    puts ' '*7 + " 2. Log In"
-    puts ' '*7 + " 0. Exit"
-end
-1
-def menu_user
-    system "clear"
-    puts "–"*60
-    puts "    Nikodermus Network    ".rjust(38, '#') + '#'*22
-    puts "   Welcome #{@current_user.nickname.length <= 0 ?
-                    @current_user.email : 
-                    @current_user.nickname}   "
-            .rjust(31,'#') + '#'* 29
-    puts "–"*60
-    puts ""
-    puts "Menu:".rjust(10, ' ')
-    puts ' '*7 + " 1. Create post"
-    puts ' '*7 + " 2. News feed"
-    puts ' '*7 + " 3. My Profile"
-    puts ' '*7 + " 4. Log out"
-    puts ' '*7 + " 0. Exit"
-end
-
 
 def sign_up
     system "clear"
