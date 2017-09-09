@@ -1,0 +1,17 @@
+<!-- Show article whose comment is being editted -->
+<h1> <%= @article.title.capitalize %></h1>
+<p> <%= @article.body %> </p>
+
+<!-- Show error if encountered -->
+<%= render 'shared/errors', object: @article%>
+
+<!-- Show form update comment -->
+<%= form_for @comment, 
+    url: article_comment_path(@article, @comment), 
+    method: :patch do |f| %>
+        <span> <%= @comment.commenter %> </span>
+        <%= f.text_area :body , :placeholder => "Body"%>
+        <%= f.submit %>
+<% end %>
+
+<p><%= link_to "Cancel", article_path(@article) %></p>
