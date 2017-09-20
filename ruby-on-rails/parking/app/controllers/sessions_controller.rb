@@ -6,8 +6,10 @@ class SessionsController < ApplicationController
   end
 
   def create
+    puts session_params
+    puts params
     user = User.find_by(email: session_params[:email])
-    if user and user.authenticate(session_params[:password])
+    if user and user.authenticate(params[:session][:password])
       session[:user_id] = user.id
       flash[:success] = "Logged in perrito !"
       @current_user = user
@@ -19,7 +21,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    binding.pry
+    #binding.pry
     session.delete(:user_id)
     flash[:success] = "Logout successfully! Vemos mi perro"
     redirect_to welcome_path
