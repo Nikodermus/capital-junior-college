@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  plate: MyString
+  vtype: MyString
+  hour_in: 2017-09-20 19:42:47
+  hour_out: 2017-09-20 19:42:47
+  price: 1
+
+two:
+  plate: MyString
+  vtype: MyString
+  hour_in: 2017-09-20 19:42:47
+  hour_out: 2017-09-20 19:42:47
+  price: 1

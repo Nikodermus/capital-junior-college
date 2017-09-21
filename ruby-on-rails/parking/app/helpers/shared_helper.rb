@@ -15,7 +15,5 @@ module SharedHelper
     end
   end
 
-  
-
 
 end

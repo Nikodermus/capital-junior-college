@@ -1,2 +1,27 @@
 <h1> Hellow! <%= current_user.email %> </h1>
+
+<%= link_to "Create ticket", new_ticket_path%> 
+
+<h2>Open tickets</h2>
+<ul>
+<%@open_tickets = Ticket.where(hour_out: nil)%>
+<%@open_tickets.each do |ticket|%>
+<li>
+    <%= link_to ticket[:plate].upcase, ticket_path(ticket) %>
+    </li>
+<%end%>
+</ul>
+<%@closed_tickets = Ticket.where.not(hour_out: nil)%>
+    <%unless @closed_tickets.first.blank?%>
+    <h2>Closed tickets</h2>
+    <ul>
+    <%@closed_tickets.each do |ticket|%>
+        <li>
+            <%= ticket[:plate].upcase%>
+            <%= link_to "See more", ticket_path(ticket) %>
+        </li>
+    <%end%>
+    </ul>
+<%end%>
+</ul>
 <a href="<%= logout_path %>" data-method="delete">logout</a>

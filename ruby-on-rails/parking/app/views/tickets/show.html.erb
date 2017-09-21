@@ -1,0 +1,16 @@
+<h1>Ticket <%= @ticket[:plate].upcase %> </h1>
+
+<ul>
+    <li>Type of car: <%= @ticket[:vtype].capitalize %></li>
+    <li>Hour in: <%= @ticket[:hour_in].to_formatted_s(:short)   %></li>
+    <%if @ticket[:hour_out] %>
+        <li>Hour out: <%= @ticket[:hour_out].to_formatted_s(:short)   %></li>    
+        <li>Cost: <%= @ticket[:price]%></li>
+    <%end%>
+</ul>
+
+<%unless @ticket[:hour_out] %>
+    <%= link_to "Checkout", bill_path(@ticket), method: :patch%>
+<%end%>
+<%= link_to "Delete", ticket_path(@ticket), method: :delete%>
+<%= link_to "Return", root_path%> 

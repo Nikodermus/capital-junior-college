@@ -1,0 +1,8 @@
+<h1> Create your ticket </h1>
+<%= form_for :ticket, url: tickets_path, method: :post do |f|%>
+    <%= f.label :plate %><br>
+    <%= f.text_field :plate %><br>
+    <%= f.label :vtype %><br>
+    <%= f.select :vtype, %w(car bike cycle truck bigger)%><br>
+    <%= f.submit %>
+<% end %>

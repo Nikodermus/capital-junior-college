@@ -1,17 +1,17 @@
   [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
-  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Migrating to CreateUsers (20170914025343)
-  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
   [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar, "gov_id" varchar, "name" varchar, "email" varchar, "password_digest" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170914025343"]]
-  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (20.5ms)[0m  [1m[36mcommit transaction[0m
   [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-09-20 00:16:15.736361"], ["updated_at", "2017-09-20 00:16:15.736361"]]
-  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-09-21 00:30:36.293855"], ["updated_at", "2017-09-21 00:30:36.293855"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
@@ -21,541 +21,1377 @@ Migrating to CreateUsers (20170914025343)
             FROM sqlite_temp_master
             WHERE name='index_users_on_email' AND type='index'
 [0m
-Started GET "/" for 127.0.0.1 at 2017-09-19 19:16:31 -0500
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by SessionsController#welcome as HTML
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
-Redirected to http://localhost:3000/sessions/new
-Filter chain halted as :authenticate_user! rendered or redirected
-Completed 302 Found in 13ms (ActiveRecord: 0.4ms)
-
-
-Started GET "/sessions/new" for 127.0.0.1 at 2017-09-19 19:16:31 -0500
-Processing by SessionsController#new as HTML
-  Rendering sessions/new.html.erb within layouts/application
-  Rendered sessions/new.html.erb within layouts/application (12.3ms)
-Completed 200 OK in 1282ms (Views: 1280.0ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 19:16:46 -0500
+Started POST "/sessions" for 127.0.0.1 at 2017-09-20 19:33:26 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"naqAt9CzhHUpaFcF9JWQB2KCFs0t8A8lrVgNpk8tPUbKCq/OAbbcmmxNI97vQQ1YNUbhJYg235gZatit4NWIsw==", "session"=>{"email"=>"asd@s.c", "password"=>"[FILTERED]"}, "commit"=>"Save Session"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "asd@s.c"], ["LIMIT", 1]]
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tMLk/735QQrvusnv8aDS1hn5hBx2Y6zTnXF9ZErcOa9xJJj/nGS5PBH3RDWF9YFEoma2i0fxseMPQpH2mx68rQ==", "session"=>{"email"=>"n@d.c", "password"=>"[FILTERED]"}, "commit"=>"Save Session"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.c"], ["LIMIT", 1]]
 Redirected to http://localhost:3000/sessions/new
-Completed 302 Found in 4ms (ActiveRecord: 0.2ms)
+Completed 302 Found in 23ms (ActiveRecord: 0.5ms)
 
 
-Started GET "/sessions/new" for 127.0.0.1 at 2017-09-19 19:16:46 -0500
+Started GET "/sessions/new" for 127.0.0.1 at 2017-09-20 19:33:26 -0500
 Processing by SessionsController#new as HTML
   Rendering sessions/new.html.erb within layouts/application
-  Rendered sessions/new.html.erb within layouts/application (2.1ms)
-Completed 200 OK in 22ms (Views: 20.2ms | ActiveRecord: 0.0ms)
+  Rendered sessions/new.html.erb within layouts/application (71.6ms)
+Completed 200 OK in 313ms (Views: 310.8ms | ActiveRecord: 0.0ms)
 
 
-  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
-  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
-  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
-  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
-  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "n@d.c"], ["password_digest", "asdoqwnd"], ["created_at", "2017-09-20 01:29:26.522648"], ["updated_at", "2017-09-20 01:29:26.522648"]]
-  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
-  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "n@d.g"], ["password_digest", "asdoqwn"], ["created_at", "2017-09-20 01:45:08.184922"], ["updated_at", "2017-09-20 01:45:08.184922"]]
-  [1m[35m (124.6ms)[0m  [1m[36mcommit transaction[0m
-  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
-  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
-  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "n@d.f"], ["password_digest", "asdoqwfn"], ["created_at", "2017-09-20 01:48:13.862641"], ["updated_at", "2017-09-20 01:48:13.862641"]]
-  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
-Started GET "/sessions/new" for 127.0.0.1 at 2017-09-19 20:49:07 -0500
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by SessionsController#new as HTML
-  Rendering sessions/new.html.erb within layouts/application
-  Rendered sessions/new.html.erb within layouts/application (17.9ms)
-Completed 200 OK in 267ms (Views: 257.2ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 20:49:19 -0500
+Started POST "/sessions" for 127.0.0.1 at 2017-09-20 19:33:27 -0500
 Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9gAzk2ydhjflB7bWNumGoNVNBkijbJByqBDn3IPuCKWhoBzqvZje2KAiwg0tPRv/gonxoAaqQM8cIjLXLBa9UA==", "session"=>{"email"=>"n@d.f", "password_digest"=>"[FILTERED]"}, "commit"=>"Save Session"}
-Unpermitted parameter: :password_digest
-  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Unpermitted parameter: :password_digest
-Completed 500 Internal Server Error in 123ms (ActiveRecord: 0.9ms)
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nozobURJx0JpvpFskYtg3pYqKyNFmGqd/kNpjU4jPq5bapRtZdQ/dJfzHLbl3jNMLbUZtHQKd61scIUfn+G7rA==", "session"=>{"email"=>"n@d.c", "password"=>"[FILTERED]"}, "commit"=>"Save Session"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.c"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/sessions/new
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
 
 
-  
-NoMethodError (undefined method `authenticate' for #<User:0x007f9b02791f68>):
-  
-app/controllers/sessions_controller.rb:10:in `create'
-Started GET "/sessions/new" for 127.0.0.1 at 2017-09-19 21:02:48 -0500
+Started GET "/sessions/new" for 127.0.0.1 at 2017-09-20 19:33:27 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 18ms (Views: 16.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2017-09-20 19:33:29 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 19ms (Views: 16.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2017-09-20 19:33:30 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"C/d6gGTA6+Mh3ao/vvU9oPJ+DJ4ueHrAdvxFW3BYAbvOEQaARV0T1d+QJ+XKoG4ySeE+CR/qZ/Dkz6nJoZqEuQ==", "session"=>{"email"=>"n@d.c", "password"=>"[FILTERED]"}, "commit"=>"Save Session"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.c"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/sessions/new
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2017-09-20 19:33:30 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 19ms (Views: 16.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2017-09-20 19:33:31 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hF6Lft7IgA8XBsjiLz+U2LfUE1B9RzmHCDPF8hI9tcJBuPd+/1V4OelLRThbasdKDEshx0zVJLeaAClgw/8wwA==", "session"=>{"email"=>"n@d.c", "password"=>"[FILTERED]"}, "commit"=>"Save Session"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.c"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/sessions/new
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2017-09-20 19:33:31 -0500
 Processing by SessionsController#new as HTML
   Rendering sessions/new.html.erb within layouts/application
   Rendered sessions/new.html.erb within layouts/application (1.5ms)
-Completed 200 OK in 20ms (Views: 18.1ms)
+Completed 200 OK in 19ms (Views: 17.5ms | ActiveRecord: 0.0ms)
 
 
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 21:02:50 -0500
+Started POST "/sessions" for 127.0.0.1 at 2017-09-20 19:33:31 -0500
 Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HaDamiYlRgiHH/r88NRkb7Vo0Wqd0sIbbiDs527agtVKAPXj9yAe58I6jifrAPkw4qwmgjgUEqbaEjnswSI3IA==", "session"=>{"email"=>"n@d.f", "password_digest"=>"[FILTERED]"}, "commit"=>"Save Session"}
-Unpermitted parameter: :password_digest
-  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Unpermitted parameter: :password_digest
-Completed 500 Internal Server Error in 16ms (ActiveRecord: 1.2ms)
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qhTIGbJit5C00ftnFMwO8Et5wZob10siup+Xm0j+PRBv8rQZk/9Ppkqcdr1gmV1i8ObzDSpFVhIorHsJmTy4Eg==", "session"=>{"email"=>"n@d.c", "password"=>"[FILTERED]"}, "commit"=>"Save Session"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.c"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/sessions/new
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
 
 
-  
-ArgumentError (wrong number of arguments (given 1, expected 0)):
-  
-app/models/user.rb:11:in `authenticate'
-app/controllers/sessions_controller.rb:10:in `create'
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 21:03:43 -0500
+Started GET "/sessions/new" for 127.0.0.1 at 2017-09-20 19:33:31 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 18ms (Views: 16.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2017-09-20 19:33:31 -0500
 Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HaDamiYlRgiHH/r88NRkb7Vo0Wqd0sIbbiDs527agtVKAPXj9yAe58I6jifrAPkw4qwmgjgUEqbaEjnswSI3IA==", "session"=>{"email"=>"n@d.f", "password_digest"=>"[FILTERED]"}, "commit"=>"Save Session"}
-Completed 500 Internal Server Error in 1ms
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LsYIXe0CR9wWm4egqrqOU2f0QfLo8BbJQlA1eSSdtjrrIHRdzJ+/6ujWCnre793B3GtzZdliC/nQY9nr9V8zOA==", "session"=>{"email"=>"n@d.c", "password"=>"[FILTERED]"}, "commit"=>"Save Session"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.c"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/sessions/new
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
 
 
-  
-SyntaxError (/Users/cjc10/capital-junior-college/ruby-on-rails/parking/app/models/user.rb:11: syntax error, unexpected '.', expecting ';' or '\n'
-	def authenticate session.password_digest
-	                         ^
-/Users/cjc10/capital-junior-college/ruby-on-rails/parking/app/models/user.rb:53: syntax error, unexpected keyword_end, expecting end-of-input):
-  
-app/models/user.rb:11: syntax error, unexpected '.', expecting ';' or '\n'
-app/models/user.rb:53: syntax error, unexpected keyword_end, expecting end-of-input
-app/controllers/sessions_controller.rb:9:in `create'
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 21:04:03 -0500
+Started GET "/sessions/new" for 127.0.0.1 at 2017-09-20 19:33:31 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 18ms (Views: 16.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2017-09-20 19:33:31 -0500
 Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HaDamiYlRgiHH/r88NRkb7Vo0Wqd0sIbbiDs527agtVKAPXj9yAe58I6jifrAPkw4qwmgjgUEqbaEjnswSI3IA==", "session"=>{"email"=>"n@d.f", "password_digest"=>"[FILTERED]"}, "commit"=>"Save Session"}
-Completed 500 Internal Server Error in 1ms
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ji7l0fK+mKhK1I9xA5jz9K9VJi/LzyUklGEStKW8rxLjyJnR0yNgnrSZAqt3zaBmFMoUuPpdOBQGUv4mdH4qEA==", "session"=>{"email"=>"n@d.c", "password"=>"[FILTERED]"}, "commit"=>"Save Session"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.c"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/sessions/new
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
 
 
-  
-SyntaxError (/Users/cjc10/capital-junior-college/ruby-on-rails/parking/app/models/user.rb:11: syntax error, unexpected '[', expecting ';' or '\n'
-	def authenticate session[:password_digest]
-	                         ^
-/Users/cjc10/capital-junior-college/ruby-on-rails/parking/app/models/user.rb:53: syntax error, unexpected keyword_end, expecting end-of-input):
-  
-app/models/user.rb:11: syntax error, unexpected '[', expecting ';' or '\n'
-app/models/user.rb:53: syntax error, unexpected keyword_end, expecting end-of-input
-app/controllers/sessions_controller.rb:9:in `create'
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 21:04:22 -0500
+Started GET "/sessions/new" for 127.0.0.1 at 2017-09-20 19:33:31 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 18ms (Views: 16.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2017-09-20 19:33:32 -0500
 Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HaDamiYlRgiHH/r88NRkb7Vo0Wqd0sIbbiDs527agtVKAPXj9yAe58I6jifrAPkw4qwmgjgUEqbaEjnswSI3IA==", "session"=>{"email"=>"n@d.f", "password_digest"=>"[FILTERED]"}, "commit"=>"Save Session"}
-Completed 500 Internal Server Error in 2ms
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JtwkgaCEGUNP+xXfMCRQ5nQNTrtatq3Xyxmaau2GJ8TjOliBgRnhdbG2mAVEcQN0z5J8LGsksOdZKnb4PESixg==", "session"=>{"email"=>"n@d.c", "password"=>"[FILTERED]"}, "commit"=>"Save Session"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.c"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/sessions/new
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
 
 
-  
-SyntaxError (/Users/cjc10/capital-junior-college/ruby-on-rails/parking/app/models/user.rb:11: syntax error, unexpected ':', expecting ';' or '\n'
-	def authenticate :session[:password_digest]
-	                  ^
-/Users/cjc10/capital-junior-college/ruby-on-rails/parking/app/models/user.rb:53: syntax error, unexpected keyword_end, expecting end-of-input):
-  
-app/models/user.rb:11: syntax error, unexpected ':', expecting ';' or '\n'
-app/models/user.rb:53: syntax error, unexpected keyword_end, expecting end-of-input
-app/controllers/sessions_controller.rb:9:in `create'
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 21:06:10 -0500
+Started GET "/sessions/new" for 127.0.0.1 at 2017-09-20 19:33:32 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 18ms (Views: 16.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2017-09-20 19:33:32 -0500
 Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HaDamiYlRgiHH/r88NRkb7Vo0Wqd0sIbbiDs527agtVKAPXj9yAe58I6jifrAPkw4qwmgjgUEqbaEjnswSI3IA==", "session"=>{"email"=>"n@d.f", "password_digest"=>"[FILTERED]"}, "commit"=>"Save Session"}
-Unpermitted parameter: :password_digest
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Unpermitted parameter: :password_digest
-Completed 500 Internal Server Error in 15ms (ActiveRecord: 1.2ms)
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5NC1z/LVB6LZmNgik+I/oQ6GuK6MybnSIFOLzlpXyVohNsnP00j/lCfVVfjnt2wztRmKOb1bpOKyYGdci5VMWA==", "session"=>{"email"=>"n@d.c", "password"=>"[FILTERED]"}, "commit"=>"Save Session"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.c"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/sessions/new
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
 
 
-  
-ArgumentError (wrong number of arguments (given 1, expected 0)):
-  
-app/models/user.rb:11:in `authenticate'
-app/controllers/sessions_controller.rb:10:in `create'
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 21:06:34 -0500
+Started GET "/sessions/new" for 127.0.0.1 at 2017-09-20 19:33:32 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 18ms (Views: 16.8ms | ActiveRecord: 0.0ms)
+
+
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "n@d.c"], ["password_digest", "$2a$10$tKLqQyfiTx6ED5L6chobIubq9RVjei/ubjyslqjYf/7VRbnSTRRAa"], ["created_at", "2017-09-21 00:33:42.448458"], ["updated_at", "2017-09-21 00:33:42.448458"]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+Started POST "/sessions" for 127.0.0.1 at 2017-09-20 19:33:44 -0500
 Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HaDamiYlRgiHH/r88NRkb7Vo0Wqd0sIbbiDs527agtVKAPXj9yAe58I6jifrAPkw4qwmgjgUEqbaEjnswSI3IA==", "session"=>{"email"=>"n@d.f", "password_digest"=>"[FILTERED]"}, "commit"=>"Save Session"}
-Unpermitted parameter: :password_digest
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Unpermitted parameter: :password_digest
-Completed 500 Internal Server Error in 23ms (ActiveRecord: 1.1ms)
-
-
-  
-NameError (undefined local variable or method `params' for #<User:0x007f9b073e99b0>):
-  
-app/models/user.rb:50:in `session_params'
-app/models/user.rb:12:in `authenticate'
-app/controllers/sessions_controller.rb:10:in `create'
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 21:07:01 -0500
-Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HaDamiYlRgiHH/r88NRkb7Vo0Wqd0sIbbiDs527agtVKAPXj9yAe58I6jifrAPkw4qwmgjgUEqbaEjnswSI3IA==", "session"=>{"email"=>"n@d.f", "password_digest"=>"[FILTERED]"}, "commit"=>"Save Session"}
-Unpermitted parameter: :password_digest
-  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Unpermitted parameter: :password_digest
-Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.1ms)
-
-
-  
-NameError (undefined local variable or method `params' for #<User:0x007f9b09028d60>):
-  
-app/models/user.rb:50:in `session_params'
-app/models/user.rb:12:in `authenticate'
-app/controllers/sessions_controller.rb:10:in `create'
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 21:08:46 -0500
-Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HaDamiYlRgiHH/r88NRkb7Vo0Wqd0sIbbiDs527agtVKAPXj9yAe58I6jifrAPkw4qwmgjgUEqbaEjnswSI3IA==", "session"=>{"email"=>"n@d.f", "password_digest"=>"[FILTERED]"}, "commit"=>"Save Session"}
-Unpermitted parameter: :password_digest
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Unpermitted parameter: :password_digest
-Completed 500 Internal Server Error in 15ms (ActiveRecord: 1.1ms)
-
-
-  
-ArgumentError (wrong number of arguments (given 1, expected 0)):
-  
-app/models/user.rb:11:in `authenticate'
-app/controllers/sessions_controller.rb:10:in `create'
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 21:11:29 -0500
-Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HaDamiYlRgiHH/r88NRkb7Vo0Wqd0sIbbiDs527agtVKAPXj9yAe58I6jifrAPkw4qwmgjgUEqbaEjnswSI3IA==", "session"=>{"email"=>"n@d.f", "password_digest"=>"[FILTERED]"}, "commit"=>"Save Session"}
-Unpermitted parameter: :password_digest
-  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Unpermitted parameter: :password_digest
-Completed 500 Internal Server Error in 24ms (ActiveRecord: 1.0ms)
-
-
-  
-NameError (undefined local variable or method `params' for #<User:0x007f9b0723afb0>):
-  
-app/models/user.rb:50:in `session_params'
-app/models/user.rb:12:in `authenticate'
-app/controllers/sessions_controller.rb:10:in `create'
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 21:15:31 -0500
-Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HaDamiYlRgiHH/r88NRkb7Vo0Wqd0sIbbiDs527agtVKAPXj9yAe58I6jifrAPkw4qwmgjgUEqbaEjnswSI3IA==", "session"=>{"email"=>"n@d.f", "password_digest"=>"[FILTERED]"}, "commit"=>"Save Session"}
-Unpermitted parameter: :password_digest
-  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Unpermitted parameter: :password_digest
-  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Completed 500 Internal Server Error in 29ms (ActiveRecord: 1.0ms)
-
-
-  
-NameError (undefined local variable or method `welcome_path' for #<User:0x007f9b08175548>):
-  
-app/models/user.rb:18:in `authenticate'
-app/controllers/sessions_controller.rb:10:in `create'
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 21:17:09 -0500
-Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HaDamiYlRgiHH/r88NRkb7Vo0Wqd0sIbbiDs527agtVKAPXj9yAe58I6jifrAPkw4qwmgjgUEqbaEjnswSI3IA==", "session"=>{"email"=>"n@d.f", "password_digest"=>"[FILTERED]"}, "commit"=>"Save Session"}
-Unpermitted parameter: :password_digest
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Unpermitted parameter: :password_digest
-  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JVoEfkFvrsBNiofvd9kiviaSWR5y6esfZbfV3Jl1HU3gvHh+YPJW9rPHCjUDjHEsnQ1riUN79i/3hDlOSLeYTw==", "session"=>{"email"=>"n@d.c", "password"=>"[FILTERED]"}, "commit"=>"Save Session"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.c"], ["LIMIT", 1]]
 Redirected to http://localhost:3000/sessions/welcome
-Completed 302 Found in 18ms (ActiveRecord: 1.1ms)
+Completed 302 Found in 80ms (ActiveRecord: 0.6ms)
 
 
-Started GET "/sessions/welcome" for 127.0.0.1 at 2017-09-19 21:17:09 -0500
+Started GET "/sessions/welcome" for 127.0.0.1 at 2017-09-20 19:33:44 -0500
 Processing by SessionsController#welcome as HTML
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
   Rendering sessions/welcome.html.erb within layouts/application
   Rendered sessions/welcome.html.erb within layouts/application (0.5ms)
-Completed 200 OK in 21ms (Views: 17.3ms | ActiveRecord: 0.2ms)
+Completed 200 OK in 19ms (Views: 15.7ms | ActiveRecord: 0.2ms)
 
 
-Started DELETE "/sessions" for 127.0.0.1 at 2017-09-19 21:17:21 -0500
-Processing by SessionsController#destroy as HTML
-  Parameters: {"authenticity_token"=>"tZK/K2eLBZBrEx6Z8kKoGA8EPXhw3y0D77P7aJY7WsziMpBSto5dfy42akLpljVHWMDKkNUZ/b5bgS5jOcPvOQ=="}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
-Redirected to http://localhost:3000/sessions/welcome
-Completed 302 Found in 15ms (ActiveRecord: 1.1ms)
-
-
-Started GET "/sessions/welcome" for 127.0.0.1 at 2017-09-19 21:17:21 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTickets (20170921004247)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "tickets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "plate" varchar, "vtype" varchar, "hour_in" datetime, "hour_out" datetime, "price" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170921004247"]]
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+Started GET "/sessions/welcome" for 127.0.0.1 at 2017-09-20 19:53:33 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Processing by SessionsController#welcome as HTML
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
-Redirected to http://localhost:3000/sessions/new
-Filter chain halted as :authenticate_user! rendered or redirected
-Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  Rendered sessions/welcome.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 306ms (Views: 271.1ms | ActiveRecord: 0.9ms)
 
 
-Started GET "/sessions/new" for 127.0.0.1 at 2017-09-19 21:17:21 -0500
-Processing by SessionsController#new as HTML
-  Rendering sessions/new.html.erb within layouts/application
-  Rendered sessions/new.html.erb within layouts/application (1.5ms)
-Completed 200 OK in 20ms (Views: 17.8ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 21:17:32 -0500
-Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"797m26lUF8OMqjpUaL56iOoUk14ivf+GZuO7ldM31+G4fsmieFFPLMmPTo9zaufXvdBktod7LzvS0W6efM9iFA==", "session"=>{"email"=>"n@d.f", "password_digest"=>"[FILTERED]"}, "commit"=>"Save Session"}
-Unpermitted parameter: :password_digest
-  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Unpermitted parameter: :password_digest
-  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Redirected to http://localhost:3000/sessions/new
-Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
-
-
-Started GET "/sessions/new" for 127.0.0.1 at 2017-09-19 21:17:32 -0500
-Processing by SessionsController#new as HTML
-  Rendering sessions/new.html.erb within layouts/application
-  Rendered sessions/new.html.erb within layouts/application (1.5ms)
-Completed 200 OK in 20ms (Views: 17.8ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 21:17:42 -0500
-Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kVuQLgluEOgY9Pop8E14Wf+UTN1N9zw9jxRUcOfx5XLG+79X2GtIB13RjvLrmeUGqFC7Negx7IA7JoF7SAlQhw==", "session"=>{"email"=>"n@d.f", "password_digest"=>"[FILTERED]"}, "commit"=>"Save Session"}
-Unpermitted parameter: :password_digest
-  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Unpermitted parameter: :password_digest
-  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Redirected to http://localhost:3000/sessions/new
-Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
-
-
-Started GET "/sessions/new" for 127.0.0.1 at 2017-09-19 21:17:42 -0500
-Processing by SessionsController#new as HTML
-  Rendering sessions/new.html.erb within layouts/application
-  Rendered sessions/new.html.erb within layouts/application (1.5ms)
-Completed 200 OK in 19ms (Views: 17.3ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 21:17:50 -0500
-Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"u9ndeEGOrAvNuG1wJYj51tu5/F45dVFp1NwzF+GjNWvsefIBkIv05IidGas+XGSJjH0LtpyzgdRg7uYcTluAng==", "session"=>{"email"=>"n@d.f", "password_digest"=>"[FILTERED]"}, "commit"=>"Save Session"}
-Unpermitted parameter: :password_digest
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Unpermitted parameter: :password_digest
-  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Redirected to http://localhost:3000/sessions/new
-Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
-
-
-Started GET "/sessions/new" for 127.0.0.1 at 2017-09-19 21:17:50 -0500
-Processing by SessionsController#new as HTML
-  Rendering sessions/new.html.erb within layouts/application
-  Rendered sessions/new.html.erb within layouts/application (1.4ms)
-Completed 200 OK in 27ms (Views: 25.0ms | ActiveRecord: 0.0ms)
-
-
-Started GET "/sessions/new" for 127.0.0.1 at 2017-09-19 21:18:44 -0500
-Processing by SessionsController#new as HTML
-  Rendering sessions/new.html.erb within layouts/application
-  Rendered sessions/new.html.erb within layouts/application (1.5ms)
-Completed 200 OK in 20ms (Views: 17.6ms)
-
-
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 21:18:51 -0500
-Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Z6kjwXuJsL9rceosG4KGdKrw7Ue1Je8FklndpTUoymowCQy4qozoUC5UnvcAVhsr/TQarxDjP7gmawiumtB/nw==", "session"=>{"email"=>"n@d.f", "password_digest"=>"[FILTERED]"}, "commit"=>"Save Session"}
-Unpermitted parameter: :password_digest
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Unpermitted parameter: :password_digest
-  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Redirected to http://localhost:3000/sessions/new
-Completed 302 Found in 17ms (ActiveRecord: 1.2ms)
-
-
-Started GET "/sessions/new" for 127.0.0.1 at 2017-09-19 21:18:51 -0500
-Processing by SessionsController#new as HTML
-  Rendering sessions/new.html.erb within layouts/application
-  Rendered sessions/new.html.erb within layouts/application (1.4ms)
-Completed 200 OK in 19ms (Views: 17.0ms | ActiveRecord: 0.0ms)
-
-
-Started GET "/sessions/new" for 127.0.0.1 at 2017-09-19 21:20:00 -0500
-Processing by SessionsController#new as HTML
-  Rendering sessions/new.html.erb within layouts/application
-  Rendered sessions/new.html.erb within layouts/application (1.7ms)
-Completed 200 OK in 21ms (Views: 18.8ms)
-
-
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 21:20:07 -0500
-Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Pm5uqH+YBErHOLwogVAn4sImp9T/gecsSArGvjDfC7JpzkHRrp1cpYIdyPOahLq9leJQPFpHN5H8OBO1nye+Rw==", "session"=>{"email"=>"n@d.f", "password_digest"=>"[FILTERED]"}, "commit"=>"Save Session"}
-Unpermitted parameter: :password_digest
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Unpermitted parameter: :password_digest
-Redirected to http://localhost:3000/sessions/new
-Completed 302 Found in 16ms (ActiveRecord: 1.1ms)
-
-
-Started GET "/sessions/new" for 127.0.0.1 at 2017-09-19 21:20:07 -0500
-Processing by SessionsController#new as HTML
-  Rendering sessions/new.html.erb within layouts/application
-  Rendered sessions/new.html.erb within layouts/application (1.6ms)
-Completed 200 OK in 21ms (Views: 19.1ms | ActiveRecord: 0.0ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-09-19 21:32:13 -0500
+Started GET "/sessions/welcome" for 127.0.0.1 at 2017-09-20 19:56:27 -0500
 Processing by SessionsController#welcome as HTML
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
-Redirected to http://localhost:3000/sessions/new
-Filter chain halted as :authenticate_user! rendered or redirected
-Completed 302 Found in 6ms (ActiveRecord: 0.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  Rendered sessions/welcome.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 20ms (Views: 17.1ms | ActiveRecord: 0.2ms)
 
 
-Started GET "/sessions/new" for 127.0.0.1 at 2017-09-19 21:32:13 -0500
-Processing by SessionsController#new as HTML
-  Rendering sessions/new.html.erb within layouts/application
-  Rendered sessions/new.html.erb within layouts/application (1.6ms)
-Completed 200 OK in 23ms (Views: 20.2ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 21:32:19 -0500
-Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"K5NwAuUGutkvexXrE6dBqO7c0FtKK7JIGiD3kHhXV2R8M197NAPiNmpeYTAIc9z3uRgns+/tYvWuEiKb16/ikQ==", "session"=>{"email"=>"n@d.f", "password_digest"=>"[FILTERED]"}, "commit"=>"Save Session"}
-Unpermitted parameter: :password_digest
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Unpermitted parameter: :password_digest
-Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.6ms)
-
-
-  
-BCrypt::Errors::InvalidHash (invalid hash):
-  
-app/controllers/sessions_controller.rb:10:in `create'
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 21:38:49 -0500
-Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"K5NwAuUGutkvexXrE6dBqO7c0FtKK7JIGiD3kHhXV2R8M197NAPiNmpeYTAIc9z3uRgns+/tYvWuEiKb16/ikQ==", "session"=>{"email"=>"n@d.f", "password_digest"=>"[FILTERED]"}, "commit"=>"Save Session"}
-Unpermitted parameter: :password_digest
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Unpermitted parameter: :password_digest
-Completed 500 Internal Server Error in 16ms (ActiveRecord: 1.1ms)
-
-
-  
-BCrypt::Errors::InvalidHash (invalid hash):
-  
-app/controllers/sessions_controller.rb:10:in `create'
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 21:39:54 -0500
-Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"K5NwAuUGutkvexXrE6dBqO7c0FtKK7JIGiD3kHhXV2R8M197NAPiNmpeYTAIc9z3uRgns+/tYvWuEiKb16/ikQ==", "session"=>{"email"=>"n@d.f", "password_digest"=>"[FILTERED]"}, "commit"=>"Save Session"}
-Unpermitted parameter: :password_digest
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Unpermitted parameter: :password_digest
-Completed 500 Internal Server Error in 15ms (ActiveRecord: 1.1ms)
-
-
-  
-BCrypt::Errors::InvalidHash (invalid hash):
-  
-app/controllers/sessions_controller.rb:10:in `create'
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 21:40:21 -0500
-Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"K5NwAuUGutkvexXrE6dBqO7c0FtKK7JIGiD3kHhXV2R8M197NAPiNmpeYTAIc9z3uRgns+/tYvWuEiKb16/ikQ==", "session"=>{"email"=>"n@d.f", "password_digest"=>"[FILTERED]"}, "commit"=>"Save Session"}
-Unpermitted parameter: :password_digest
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Unpermitted parameter: :password_digest
-Completed 500 Internal Server Error in 16ms (ActiveRecord: 1.2ms)
-
-
-  
-BCrypt::Errors::InvalidHash (invalid hash):
-  
-app/controllers/sessions_controller.rb:10:in `create'
-Started PUT "/__web_console/repl_sessions/fb1feb3264f8bd265d16286e4a1543c5" for 127.0.0.1 at 2017-09-19 21:40:32 -0500
-Started PUT "/__web_console/repl_sessions/fb1feb3264f8bd265d16286e4a1543c5" for 127.0.0.1 at 2017-09-19 21:40:34 -0500
-Started PUT "/__web_console/repl_sessions/fb1feb3264f8bd265d16286e4a1543c5" for 127.0.0.1 at 2017-09-19 21:40:39 -0500
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 21:46:58 -0500
-Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"K5NwAuUGutkvexXrE6dBqO7c0FtKK7JIGiD3kHhXV2R8M197NAPiNmpeYTAIc9z3uRgns+/tYvWuEiKb16/ikQ==", "session"=>{"email"=>"n@d.f", "password_digest"=>"[FILTERED]"}, "commit"=>"Save Session"}
-Unpermitted parameter: :password_digest
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Unpermitted parameter: :password_digest
-Completed 500 Internal Server Error in 18ms (ActiveRecord: 1.1ms)
-
-
-  
-BCrypt::Errors::InvalidHash (invalid hash):
-  
-app/controllers/sessions_controller.rb:10:in `create'
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 21:48:22 -0500
-Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"K5NwAuUGutkvexXrE6dBqO7c0FtKK7JIGiD3kHhXV2R8M197NAPiNmpeYTAIc9z3uRgns+/tYvWuEiKb16/ikQ==", "session"=>{"email"=>"n@d.f", "password_digest"=>"[FILTERED]"}, "commit"=>"Save Session"}
-Unpermitted parameter: :password_digest
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Unpermitted parameter: :password_digest
-Completed 500 Internal Server Error in 22ms (ActiveRecord: 1.2ms)
-
-
-  
-BCrypt::Errors::InvalidHash (invalid hash):
-  
-app/controllers/sessions_controller.rb:10:in `create'
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 21:49:37 -0500
-Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"K5NwAuUGutkvexXrE6dBqO7c0FtKK7JIGiD3kHhXV2R8M197NAPiNmpeYTAIc9z3uRgns+/tYvWuEiKb16/ikQ==", "session"=>{"email"=>"n@d.f", "password_digest"=>"[FILTERED]"}, "commit"=>"Save Session"}
-Unpermitted parameter: :password_digest
-  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Unpermitted parameter: :password_digest
-Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.1ms)
-
-
-  
-BCrypt::Errors::InvalidHash (invalid hash):
-  
-app/controllers/sessions_controller.rb:10:in `create'
-Started GET "/sessions/new" for 127.0.0.1 at 2017-09-19 21:49:41 -0500
-Processing by SessionsController#new as HTML
-  Rendering sessions/new.html.erb within layouts/application
-  Rendered sessions/new.html.erb within layouts/application (1.6ms)
-Completed 200 OK in 21ms (Views: 18.7ms | ActiveRecord: 0.0ms)
-
-
-Started GET "/sessions/new" for 127.0.0.1 at 2017-09-19 21:49:42 -0500
-Processing by SessionsController#new as HTML
-  Rendering sessions/new.html.erb within layouts/application
-  Rendered sessions/new.html.erb within layouts/application (1.4ms)
-Completed 200 OK in 20ms (Views: 17.9ms | ActiveRecord: 0.0ms)
-
-
-Started GET "/sessions/new" for 127.0.0.1 at 2017-09-19 21:49:53 -0500
-Processing by SessionsController#new as HTML
-  Rendering sessions/new.html.erb within layouts/application
-  Rendered sessions/new.html.erb within layouts/application (1.4ms)
+Started GET "/tickets/new" for 127.0.0.1 at 2017-09-20 19:56:28 -0500
+Processing by TicketsController#new as HTML
+  Rendering tickets/new.html.erb within layouts/application
+  Rendered tickets/new.html.erb within layouts/application (0.3ms)
 Completed 200 OK in 20ms (Views: 17.7ms | ActiveRecord: 0.0ms)
 
 
-Started GET "/sessions/new" for 127.0.0.1 at 2017-09-19 21:50:08 -0500
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by SessionsController#new as HTML
-  Rendering sessions/new.html.erb within layouts/application
-  Rendered sessions/new.html.erb within layouts/application (25.2ms)
-Completed 200 OK in 216ms (Views: 205.5ms | ActiveRecord: 0.0ms)
+Started GET "/sessions/welcome" for 127.0.0.1 at 2017-09-20 19:57:55 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  Rendered sessions/welcome.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 21ms (Views: 18.4ms | ActiveRecord: 0.1ms)
 
 
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 21:50:12 -0500
-Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cRpubdxBuiEUAMiEkXOgphEbL/+zAkKjzTJPiErAip4mukEUDUTizlElvF+Kpz35Rt/YFxbEkh55AJqD5Tg/aw==", "session"=>{"email"=>"n@d.f", "password"=>"[FILTERED]"}, "commit"=>"Save Session"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Completed 500 Internal Server Error in 73ms (ActiveRecord: 0.9ms)
-
-
-  
-BCrypt::Errors::InvalidHash (invalid hash):
-  
-app/controllers/sessions_controller.rb:10:in `create'
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 21:52:02 -0500
-Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cRpubdxBuiEUAMiEkXOgphEbL/+zAkKjzTJPiErAip4mukEUDUTizlElvF+Kpz35Rt/YFxbEkh55AJqD5Tg/aw==", "session"=>{"email"=>"n@d.f", "password"=>"[FILTERED]"}, "commit"=>"Save Session"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Completed 500 Internal Server Error in 30ms (ActiveRecord: 1.2ms)
+Started GET "/tickets/new" for 127.0.0.1 at 2017-09-20 19:57:56 -0500
+Processing by TicketsController#new as HTML
+  Rendering tickets/new.html.erb within layouts/application
+  Rendered tickets/new.html.erb within layouts/application (189.7ms)
+Completed 500 Internal Server Error in 196ms (ActiveRecord: 0.0ms)
 
 
   
-BCrypt::Errors::InvalidHash (invalid hash):
+ActionView::Template::Error (undefined local variable or method `tickets' for #<#<Class:0x007fbd118d68e8>:0x007fbd1217aa30>
+Did you mean?  tickets_url):
+    1: <h1> Create your ticket </h1>
+    2: <%= form_for :ticket, url: tickets, method: :post do |f|%>
+    3:     <%= f.label :plate %><br>
+    4:     <%= f.text_field :plate %><br>
+    5:     <%= f.label :vtype %><br>
   
-app/controllers/sessions_controller.rb:11:in `create'
-Started GET "/sessions" for 127.0.0.1 at 2017-09-19 22:00:39 -0500
+app/views/tickets/new.html.erb:2:in `_app_views_tickets_new_html_erb__4221367682066846211_70225014544860'
+Started GET "/tickets/new" for 127.0.0.1 at 2017-09-20 19:58:10 -0500
+Processing by TicketsController#new as HTML
+  Rendering tickets/new.html.erb within layouts/application
+  Rendered tickets/new.html.erb within layouts/application (24.8ms)
+Completed 200 OK in 49ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tickets/new" for 127.0.0.1 at 2017-09-20 20:02:23 -0500
+Processing by TicketsController#new as HTML
+  Rendering tickets/new.html.erb within layouts/application
+  Rendered tickets/new.html.erb within layouts/application (0.7ms)
+Completed 500 Internal Server Error in 7ms
+
+
   
-ActionController::RoutingError (No route matches [GET] "/sessions"):
+SyntaxError (/Users/cjc10/capital-junior-college/ruby-on-rails/parking/app/views/tickets/new.html.erb:6: syntax error, unexpected '<'
+e cycle truck other(bigger))><br>
+                              ^
+/Users/cjc10/capital-junior-college/ruby-on-rails/parking/app/views/tickets/new.html.erb:8: syntax error, unexpected keyword_end, expecting ')'
+'.freeze; end ;
+             ^
+/Users/cjc10/capital-junior-college/ruby-on-rails/parking/app/views/tickets/new.html.erb:10: syntax error, unexpected keyword_ensure, expecting ')'
+          ensure
+                ^
+/Users/cjc10/capital-junior-college/ruby-on-rails/parking/app/views/tickets/new.html.erb:12: syntax error, unexpected keyword_end, expecting ')'
+          end
+             ^):
+  
+app/views/tickets/new.html.erb:6: syntax error, unexpected '<'
+app/views/tickets/new.html.erb:8: syntax error, unexpected keyword_end, expecting ')'
+app/views/tickets/new.html.erb:10: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/tickets/new.html.erb:12: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/tickets/new" for 127.0.0.1 at 2017-09-20 20:02:35 -0500
+Processing by TicketsController#new as HTML
+  Rendering tickets/new.html.erb within layouts/application
+  Rendered tickets/new.html.erb within layouts/application (0.8ms)
+Completed 500 Internal Server Error in 7ms
+
+
+  
+SyntaxError (/Users/cjc10/capital-junior-college/ruby-on-rails/parking/app/views/tickets/new.html.erb:6: syntax error, unexpected '<'
+car bike cycle truck bigger)><br>
+                              ^
+/Users/cjc10/capital-junior-college/ruby-on-rails/parking/app/views/tickets/new.html.erb:8: syntax error, unexpected keyword_end, expecting ')'
+'.freeze; end ;
+             ^
+/Users/cjc10/capital-junior-college/ruby-on-rails/parking/app/views/tickets/new.html.erb:10: syntax error, unexpected keyword_ensure, expecting ')'
+          ensure
+                ^
+/Users/cjc10/capital-junior-college/ruby-on-rails/parking/app/views/tickets/new.html.erb:12: syntax error, unexpected keyword_end, expecting ')'
+          end
+             ^):
+  
+app/views/tickets/new.html.erb:6: syntax error, unexpected '<'
+app/views/tickets/new.html.erb:8: syntax error, unexpected keyword_end, expecting ')'
+app/views/tickets/new.html.erb:10: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/tickets/new.html.erb:12: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/tickets/new" for 127.0.0.1 at 2017-09-20 20:02:46 -0500
+Processing by TicketsController#new as HTML
+  Rendering tickets/new.html.erb within layouts/application
+  Rendered tickets/new.html.erb within layouts/application (19.0ms)
+Completed 200 OK in 39ms (Views: 36.7ms)
+
+
+Started POST "/tickets" for 127.0.0.1 at 2017-09-20 20:08:35 -0500
+Processing by TicketsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8e+OVjEOGfkxfc3PZE7ux3iAxaktWpRDeCydAHmUmak0CfJWEJPhz88wQBUQG71Vwx/3PhzIiXPqH3GSqFYcqw==", "ticket"=>{"plate"=>"asd000", "vtype"=>"cycle"}, "commit"=>"Save Ticket"}
+Completed 500 Internal Server Error in 4ms
+
+
+  
+NoMethodError (undefined method `now' for Date:Class
+Did you mean?  new):
+  
+app/controllers/tickets_controller.rb:6:in `create'
+Started POST "/tickets" for 127.0.0.1 at 2017-09-20 20:09:14 -0500
+Processing by TicketsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8e+OVjEOGfkxfc3PZE7ux3iAxaktWpRDeCydAHmUmak0CfJWEJPhz88wQBUQG71Vwx/3PhzIiXPqH3GSqFYcqw==", "ticket"=>{"plate"=>"asd000", "vtype"=>"cycle"}, "commit"=>"Save Ticket"}
+No template found for TicketsController#create, rendering head :no_content
+Completed 204 No Content in 76ms (ActiveRecord: 1.1ms)
+
+
+Started POST "/tickets" for 127.0.0.1 at 2017-09-20 20:09:17 -0500
+Processing by TicketsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8e+OVjEOGfkxfc3PZE7ux3iAxaktWpRDeCydAHmUmak0CfJWEJPhz88wQBUQG71Vwx/3PhzIiXPqH3GSqFYcqw==", "ticket"=>{"plate"=>"asd000", "vtype"=>"cycle"}, "commit"=>"Save Ticket"}
+No template found for TicketsController#create, rendering head :no_content
+Completed 204 No Content in 59ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/tickets/new" for 127.0.0.1 at 2017-09-20 20:12:55 -0500
+Processing by TicketsController#new as HTML
+  Rendering tickets/new.html.erb within layouts/application
+  Rendered tickets/new.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 22ms (Views: 20.3ms)
+
+
+Started POST "/tickets" for 127.0.0.1 at 2017-09-20 20:12:59 -0500
+Processing by TicketsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GxSpRvQX0FRQEdHT999TV9mkgKNVXSiZAIIt5JlJ9E0hcK+OKu9EEFEn4qSMOR7X7xxHRNDrZFGGQd4TcTQDXA==", "ticket"=>{"plate"=>"aaa000", "vtype"=>"car"}, "commit"=>"Save Ticket"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tickets" ("plate", "vtype", "hour_in", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["plate", "aaa000"], ["vtype", "car"], ["hour_in", "2017-09-21 01:12:59.888170"], ["created_at", "2017-09-21 01:12:59.898653"], ["updated_at", "2017-09-21 01:12:59.898653"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/tickets.1
+Completed 302 Found in 74ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/tickets.1" for 127.0.0.1 at 2017-09-20 20:12:59 -0500
+  
+AbstractController::ActionNotFound (The action 'index' could not be found for TicketsController):
+  
+actionpack (5.1.4) lib/abstract_controller/base.rb:119:in `process'
+actionview (5.1.4) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.4) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.4) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/tickets" for 127.0.0.1 at 2017-09-20 20:13:11 -0500
+Processing by TicketsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GxSpRvQX0FRQEdHT999TV9mkgKNVXSiZAIIt5JlJ9E0hcK+OKu9EEFEn4qSMOR7X7xxHRNDrZFGGQd4TcTQDXA==", "ticket"=>{"plate"=>"aaa000", "vtype"=>"car"}, "commit"=>"Save Ticket"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tickets" ("plate", "vtype", "hour_in", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["plate", "aaa000"], ["vtype", "car"], ["hour_in", "2017-09-21 01:13:11.232271"], ["created_at", "2017-09-21 01:13:11.242011"], ["updated_at", "2017-09-21 01:13:11.242011"]]
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/tickets.2
+Completed 302 Found in 17ms (ActiveRecord: 3.8ms)
+
+
+Started GET "/tickets.2" for 127.0.0.1 at 2017-09-20 20:13:11 -0500
+Processing by TicketsController#index as 
+No template found for TicketsController#index, rendering head :no_content
+Completed 204 No Content in 78ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/tickets/new" for 127.0.0.1 at 2017-09-20 20:13:14 -0500
+Processing by TicketsController#new as HTML
+  Rendering tickets/new.html.erb within layouts/application
+  Rendered tickets/new.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 22ms (Views: 20.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/tickets" for 127.0.0.1 at 2017-09-20 20:13:18 -0500
+Processing by TicketsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UdDt6MGXNwxmTeP45MHjfz2bjI96l4j2jWJIVj3XoTlrtOsgH2+jSGd70I+fJ67/CyNLaP8hxD4Lobuh1apWKA==", "ticket"=>{"plate"=>"aaa001", "vtype"=>"car"}, "commit"=>"Save Ticket"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tickets" ("plate", "vtype", "hour_in", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["plate", "aaa001"], ["vtype", "car"], ["hour_in", "2017-09-21 01:13:18.884749"], ["created_at", "2017-09-21 01:13:18.885523"], ["updated_at", "2017-09-21 01:13:18.885523"]]
+  [1m[35m (6.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/tickets.3
+Completed 302 Found in 10ms (ActiveRecord: 6.9ms)
+
+
+Started GET "/tickets.3" for 127.0.0.1 at 2017-09-20 20:13:18 -0500
+Processing by TicketsController#index as 
+No template found for TicketsController#index, rendering head :no_content
+Completed 204 No Content in 77ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/tickets/new" for 127.0.0.1 at 2017-09-20 20:15:39 -0500
+Processing by TicketsController#new as HTML
+  Rendering tickets/new.html.erb within layouts/application
+  Rendered tickets/new.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 22ms (Views: 20.0ms)
+
+
+Started POST "/tickets" for 127.0.0.1 at 2017-09-20 20:15:44 -0500
+Processing by TicketsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7Yy9gJjbk3y6f4QYDdYfzuJJFcok9OdXAuKPRcDCXCkoasGAuUZrSkQyCcJ5g0xcWdYnXRVm+meQ0WPXEQDZKw==", "ticket"=>{"plate"=>"aaa000", "vtype"=>"car"}, "commit"=>"Save Ticket"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tickets" ("plate", "vtype", "hour_in", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["plate", "aaa000"], ["vtype", "car"], ["hour_in", "2017-09-21 01:15:44.583907"], ["created_at", "2017-09-21 01:15:44.594243"], ["updated_at", "2017-09-21 01:15:44.594243"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/tickets.4
+Completed 302 Found in 16ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/tickets.4" for 127.0.0.1 at 2017-09-20 20:15:44 -0500
+Processing by TicketsController#index as 
+No template found for TicketsController#index, rendering head :no_content
+Completed 204 No Content in 80ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/welcome" for 127.0.0.1 at 2017-09-20 20:16:41 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  Rendered sessions/welcome.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 35ms (Views: 19.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/tickets/new" for 127.0.0.1 at 2017-09-20 20:16:42 -0500
+Processing by TicketsController#new as HTML
+  Rendering tickets/new.html.erb within layouts/application
+  Rendered tickets/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 22ms (Views: 20.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/tickets" for 127.0.0.1 at 2017-09-20 20:16:47 -0500
+Processing by TicketsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4Bt1pT8V+imCwfFaY5qVjJiDlswO15pV9JytxuaHQ0vaf3Nt4e1ubYP3wi0YfNgMrjtRK4th1p1yX14xDvq0Wg==", "ticket"=>{"plate"=>"ava000", "vtype"=>"car"}, "commit"=>"Save Ticket"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tickets" ("plate", "vtype", "hour_in", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["plate", "ava000"], ["vtype", "car"], ["hour_in", "2017-09-21 01:16:47.491204"], ["created_at", "2017-09-21 01:16:47.501643"], ["updated_at", "2017-09-21 01:16:47.501643"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/tickets/5
+Completed 302 Found in 15ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/tickets/5" for 127.0.0.1 at 2017-09-20 20:16:47 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"5"}
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (3.0ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `[]' for nil:NilClass):
+    1: <h1>Ticket #<%= @ticket[:plate] %> </h1>
+  
+app/views/tickets/show.html.erb:1:in `_app_views_tickets_show_html_erb__3150992947733579676_70224975670300'
+Started GET "/tickets/5" for 127.0.0.1 at 2017-09-20 20:18:08 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 34ms (Views: 19.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/tickets/5" for 127.0.0.1 at 2017-09-20 20:18:19 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (6.2ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `to_uppercase' for "ava000":String):
+    1: <h1>Ticket <%= @ticket[:plate].to_uppercase %> </h1>
+  
+app/views/tickets/show.html.erb:1:in `_app_views_tickets_show_html_erb__3150992947733579676_70225004647820'
+Started GET "/tickets/5" for 127.0.0.1 at 2017-09-20 20:18:31 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (5.0ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `uppercase' for "ava000":String):
+    1: <h1>Ticket <%= @ticket[:plate].uppercase %> </h1>
+  
+app/views/tickets/show.html.erb:1:in `_app_views_tickets_show_html_erb__3150992947733579676_70225017062740'
+Started GET "/tickets/5" for 127.0.0.1 at 2017-09-20 20:18:46 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 21ms (Views: 19.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/tickets/5" for 127.0.0.1 at 2017-09-20 20:19:41 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 21ms (Views: 18.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/tickets/5" for 127.0.0.1 at 2017-09-20 20:20:14 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 21ms (Views: 18.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/tickets/5" for 127.0.0.1 at 2017-09-20 20:21:18 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 21ms (Views: 19.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/tickets/5" for 127.0.0.1 at 2017-09-20 20:21:54 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 21ms (Views: 18.3ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/tickets" for 127.0.0.1 at 2017-09-20 20:24:49 -0500
+Processing by TicketsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4Bt1pT8V+imCwfFaY5qVjJiDlswO15pV9JytxuaHQ0vaf3Nt4e1ubYP3wi0YfNgMrjtRK4th1p1yX14xDvq0Wg==", "ticket"=>{"plate"=>"ava008", "vtype"=>"car"}, "commit"=>"Save Ticket"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tickets" ("plate", "vtype", "hour_in", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["plate", "ava008"], ["vtype", "car"], ["hour_in", "2017-09-20 00:00:00"], ["created_at", "2017-09-21 01:24:49.051772"], ["updated_at", "2017-09-21 01:24:49.051772"]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/tickets/6
+Completed 302 Found in 18ms (ActiveRecord: 3.3ms)
+
+
+Started GET "/tickets/6" for 127.0.0.1 at 2017-09-20 20:24:49 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 23ms (Views: 20.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/tickets/6" for 127.0.0.1 at 2017-09-20 20:25:26 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 21ms (Views: 18.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/tickets/6" for 127.0.0.1 at 2017-09-20 20:25:35 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 21ms (Views: 18.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/tickets/6" for 127.0.0.1 at 2017-09-20 20:25:55 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 21ms (Views: 18.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/tickets/6" for 127.0.0.1 at 2017-09-20 20:27:03 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (172.7ms)
+Completed 500 Internal Server Error in 180ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `root' for #<#<Class:0x007fbd12236938>:0x007fbd0d7a6b20>):
+    5:     <li>Hour in: <%= @ticket[:hour_in].to_formatted_s(:short)   %></li>
+    6: </ul>
+    7: 
+    8: <%= link_to "Return", root%> 
+  
+app/views/tickets/show.html.erb:8:in `_app_views_tickets_show_html_erb__3150992947733579676_70224975848720'
+Started GET "/tickets/6" for 127.0.0.1 at 2017-09-20 20:27:09 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 20ms (Views: 17.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 20:27:10 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  Rendered sessions/welcome.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 30ms (Views: 17.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 20:31:34 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered sessions/welcome.html.erb within layouts/application (7.6ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for #<Ticket:0x007fbd0bcdaa80>):
+    4: 
+    5: <h2>Open tickets</h2>
+    6: <%@open_tickets = Ticket.find_by(hour_out: nil)%>
+    7: <%@open_tickets.each do |ticket|%>
+    8:     <%= ticket[:plate]%>
+    9:     <%= link_to "See more", ticket_path(ticket) %>
+   10: <%end%>
+  
+app/views/sessions/welcome.html.erb:7:in `_app_views_sessions_welcome_html_erb__1843749568242676847_70224958645540'
+Started GET "/" for 127.0.0.1 at 2017-09-20 20:33:26 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  Rendered sessions/welcome.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 28ms (Views: 24.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 20:33:45 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  Rendered sessions/welcome.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 28ms (Views: 24.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 20:33:52 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  Rendered sessions/welcome.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 26ms (Views: 22.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 20:34:07 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  Rendered sessions/welcome.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 27ms (Views: 23.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/tickets/1" for 127.0.0.1 at 2017-09-20 20:34:10 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 21ms (Views: 18.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 20:34:11 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  Rendered sessions/welcome.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 22ms (Views: 19.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/tickets/2" for 127.0.0.1 at 2017-09-20 20:34:12 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 21ms (Views: 18.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 20:34:13 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  Rendered sessions/welcome.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 24ms (Views: 21.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/tickets/3" for 127.0.0.1 at 2017-09-20 20:34:14 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 20ms (Views: 18.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 20:34:15 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  Rendered sessions/welcome.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 24ms (Views: 21.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/tickets/5" for 127.0.0.1 at 2017-09-20 20:34:16 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 21ms (Views: 19.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 20:34:17 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  Rendered sessions/welcome.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 23ms (Views: 20.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/tickets/6" for 127.0.0.1 at 2017-09-20 20:34:18 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 21ms (Views: 18.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 20:34:19 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  Rendered sessions/welcome.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 23ms (Views: 20.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 20:37:18 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL)[0m
+  Rendered sessions/welcome.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 24ms (Views: 21.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 20:38:26 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL)[0m
+  Rendered sessions/welcome.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 30ms (Views: 27.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 20:38:28 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL)[0m
+  Rendered sessions/welcome.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 22ms (Views: 19.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 20:38:28 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL)[0m
+  Rendered sessions/welcome.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 22ms (Views: 19.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 20:39:19 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  Rendered sessions/welcome.html.erb within layouts/application (0.9ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.2ms)
+
+
+  
+SyntaxError (/Users/cjc10/capital-junior-college/ruby-on-rails/parking/app/views/sessions/welcome.html.erb:16: syntax error, unexpected tIVAR, expecting ')'
+ render :plain @closed_tickets);@output_buffer.safe_append='
+                              ^):
+  
+app/views/sessions/welcome.html.erb:16: syntax error, unexpected tIVAR, expecting ')'
+Started GET "/" for 127.0.0.1 at 2017-09-20 20:39:24 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL)[0m
+  Rendered sessions/welcome.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 24ms (Views: 21.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 20:39:35 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL)[0m
+  Rendered sessions/welcome.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 24ms (Views: 20.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 20:39:37 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL)[0m
+  Rendered sessions/welcome.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 23ms (Views: 20.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 20:39:39 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL)[0m
+  Rendered sessions/welcome.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 23ms (Views: 19.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 20:40:01 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE Ticket Load (0.0ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered sessions/welcome.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 23ms (Views: 20.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 20:40:07 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered sessions/welcome.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 23ms (Views: 20.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 20:42:33 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered sessions/welcome.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 24ms (Views: 21.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 20:42:38 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered sessions/welcome.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 29ms (Views: 26.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/tickets/1" for 127.0.0.1 at 2017-09-20 20:42:51 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 22ms (Views: 19.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/tickets/1" for 127.0.0.1 at 2017-09-20 20:43:12 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 20ms (Views: 17.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/tickets/1" for 127.0.0.1 at 2017-09-20 20:53:48 -0500
+  
+SyntaxError (/Users/cjc10/capital-junior-college/ruby-on-rails/parking/app/controllers/tickets_controller.rb:42: syntax error, unexpected keyword_end, expecting keyword_when
+    end
+       ^
+/Users/cjc10/capital-junior-college/ruby-on-rails/parking/app/controllers/tickets_controller.rb:49: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/tickets_controller.rb:42: syntax error, unexpected keyword_end, expecting keyword_when
+app/controllers/tickets_controller.rb:49: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/tickets/1" for 127.0.0.1 at 2017-09-20 20:54:15 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (94.2ms)
+Completed 500 Internal Server Error in 113ms (ActiveRecord: 1.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `bill' for #<#<Class:0x007fbd0c652478>:0x007fbd0c6494b8>):
+    5:     <li>Hour in: <%= @ticket[:hour_in].to_formatted_s(:short)   %></li>
+    6: </ul>
+    7: 
+    8: <%= link_to "Checkout", bill(@ticket), method: :delete%>
+    9: <%= link_to "Return", root_path%> 
+  
+app/views/tickets/show.html.erb:8:in `_app_views_tickets_show_html_erb__3150992947733579676_70224966754060'
+Started GET "/tickets/1" for 127.0.0.1 at 2017-09-20 20:54:34 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 22ms (Views: 19.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/tickets/1" for 127.0.0.1 at 2017-09-20 21:01:55 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 36ms (Views: 21.3ms | ActiveRecord: 1.0ms)
+
+
+Started DELETE "/tickets/bill.1" for 127.0.0.1 at 2017-09-20 21:01:56 -0500
+  
+AbstractController::ActionNotFound (The action 'destroy' could not be found for TicketsController):
+  
+actionpack (5.1.4) lib/abstract_controller/base.rb:119:in `process'
+actionview (5.1.4) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.4) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.4) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started DELETE "/tickets/bill.1" for 127.0.0.1 at 2017-09-20 21:02:48 -0500
+  
+AbstractController::ActionNotFound (The action 'destroy' could not be found for TicketsController):
+  
+actionpack (5.1.4) lib/abstract_controller/base.rb:119:in `process'
+actionview (5.1.4) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.4) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.4) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/tickets/1" for 127.0.0.1 at 2017-09-20 21:02:51 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 21ms (Views: 18.3ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/tickets/bill.1" for 127.0.0.1 at 2017-09-20 21:02:52 -0500
+  
+AbstractController::ActionNotFound (The action 'update' could not be found for TicketsController):
+  
+actionpack (5.1.4) lib/abstract_controller/base.rb:119:in `process'
+actionview (5.1.4) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.4) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.4) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/tickets/1" for 127.0.0.1 at 2017-09-20 21:03:08 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 22ms (Views: 19.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/tickets/bill.1" for 127.0.0.1 at 2017-09-20 21:03:09 -0500
+Processing by TicketsController#show as 
+  Parameters: {"id"=>"bill"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Ticket with 'id'=bill):
+  
+app/controllers/tickets_controller.rb:32:in `show'
+Started GET "/tickets/bill.1" for 127.0.0.1 at 2017-09-20 21:03:44 -0500
+Processing by TicketsController#show as 
+  Parameters: {"id"=>"bill"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Ticket with 'id'=bill):
+  
+app/controllers/tickets_controller.rb:32:in `show'
+Started GET "/tickets/bill.1" for 127.0.0.1 at 2017-09-20 21:04:03 -0500
+Processing by TicketsController#show as 
+  Parameters: {"id"=>"bill"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Ticket with 'id'=bill):
+  
+app/controllers/tickets_controller.rb:32:in `show'
+Started GET "/tickets/bill.1" for 127.0.0.1 at 2017-09-20 21:04:13 -0500
+Processing by TicketsController#show as 
+  Parameters: {"id"=>"bill"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Ticket with 'id'=bill):
+  
+app/controllers/tickets_controller.rb:32:in `show'
+Started GET "/tickets/1" for 127.0.0.1 at 2017-09-20 21:05:15 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 40ms (Views: 23.9ms | ActiveRecord: 1.1ms)
+
+
+Started PATCH "/tickets-bill.1" for 127.0.0.1 at 2017-09-20 21:05:16 -0500
+Processing by TicketsController#bill as 
+  Parameters: {"authenticity_token"=>"QcduwE2LcRGAWk9PaODtmM8klAXcdldDp4o4gYnD6GGEIRLAbBaJJ34XwpUctb4KdLumku3kSnM1udQTWAFtYw=="}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Ticket with 'id'=):
+  
+app/controllers/tickets_controller.rb:39:in `bill'
+Started PATCH "/tickets-bill.1" for 127.0.0.1 at 2017-09-20 21:05:29 -0500
+Processing by TicketsController#bill as 
+  Parameters: {"authenticity_token"=>"QcduwE2LcRGAWk9PaODtmM8klAXcdldDp4o4gYnD6GGEIRLAbBaJJ34XwpUctb4KdLumku3kSnM1udQTWAFtYw=="}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Ticket with 'id'=):
+  
+app/controllers/tickets_controller.rb:39:in `bill'
+Started PATCH "/tickets-bill.1" for 127.0.0.1 at 2017-09-20 21:06:13 -0500
+Processing by TicketsController#bill as 
+  Parameters: {"authenticity_token"=>"QcduwE2LcRGAWk9PaODtmM8klAXcdldDp4o4gYnD6GGEIRLAbBaJJ34XwpUctb4KdLumku3kSnM1udQTWAFtYw=="}
+No template found for TicketsController#bill, rendering head :no_content
+Completed 204 No Content in 80ms
+
+
+Started PATCH "/tickets-bill.1" for 127.0.0.1 at 2017-09-20 21:09:07 -0500
+Processing by TicketsController#bill as 
+  Parameters: {"authenticity_token"=>"QcduwE2LcRGAWk9PaODtmM8klAXcdldDp4o4gYnD6GGEIRLAbBaJJ34XwpUctb4KdLumku3kSnM1udQTWAFtYw=="}
+No template found for TicketsController#bill, rendering head :no_content
+Completed 204 No Content in 82ms
+
+
+Started PATCH "/tickets-bill.1" for 127.0.0.1 at 2017-09-20 21:09:08 -0500
+Processing by TicketsController#bill as 
+  Parameters: {"authenticity_token"=>"QcduwE2LcRGAWk9PaODtmM8klAXcdldDp4o4gYnD6GGEIRLAbBaJJ34XwpUctb4KdLumku3kSnM1udQTWAFtYw=="}
+No template found for TicketsController#bill, rendering head :no_content
+Completed 204 No Content in 78ms
+
+
+Started GET "/tickets/1" for 127.0.0.1 at 2017-09-20 21:11:03 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (114.5ms)
+Completed 500 Internal Server Error in 135ms (ActiveRecord: 1.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `bills_path' for #<#<Class:0x007fbd10419d60>:0x007fbd10412bc8>
+Did you mean?  bill_path):
+    10:     <%end%>
+    11: </ul>
+    12: 
+    13: <%= link_to "Checkout", bills_path(@ticket), method: :patch%>
+    14: <%= link_to "Return", root_path%> 
+  
+app/views/tickets/show.html.erb:13:in `_app_views_tickets_show_html_erb__3150992947733579676_70224999142540'
+Started GET "/tickets/1" for 127.0.0.1 at 2017-09-20 21:11:08 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 27ms (Views: 24.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/tickets/1" for 127.0.0.1 at 2017-09-20 21:11:53 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.6ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 39ms (Views: 21.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/tickets/1" for 127.0.0.1 at 2017-09-20 21:11:56 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 20ms (Views: 17.4ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/tickets-bill.1" for 127.0.0.1 at 2017-09-20 21:11:58 -0500
+  
+ActionController::RoutingError (uninitialized constant TicketController):
+  
+activesupport (5.1.4) lib/active_support/inflector/methods.rb:269:in `const_get'
+activesupport (5.1.4) lib/active_support/inflector/methods.rb:269:in `block in constantize'
+activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `each'
+activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `inject'
+activesupport (5.1.4) lib/active_support/inflector/methods.rb:267:in `constantize'
+actionpack (5.1.4) lib/action_dispatch/http/request.rb:85:in `controller_class_for'
+actionpack (5.1.4) lib/action_dispatch/http/request.rb:78:in `controller_class'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:43:in `controller'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:29:in `serve'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started PATCH "/tickets-bill.1" for 127.0.0.1 at 2017-09-20 21:12:25 -0500
+  
+ActionController::RoutingError (No route matches [PATCH] "/tickets-bill.1"):
   
 actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
 web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
@@ -584,20 +1420,9 @@ puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
 puma (3.10.0) lib/puma/server.rb:437:in `process_client'
 puma (3.10.0) lib/puma/server.rb:301:in `block in run'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 22:00:44 -0500
-Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cRpubdxBuiEUAMiEkXOgphEbL/+zAkKjzTJPiErAip4mukEUDUTizlElvF+Kpz35Rt/YFxbEkh55AJqD5Tg/aw==", "session"=>{"email"=>"n@d.f", "password"=>"[FILTERED]"}, "commit"=>"Save Session"}
-  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Completed 500 Internal Server Error in 13ms (ActiveRecord: 1.0ms)
-
-
+Started PATCH "/tickets-bill.1" for 127.0.0.1 at 2017-09-20 21:12:27 -0500
   
-BCrypt::Errors::InvalidHash (invalid hash):
-  
-app/controllers/sessions_controller.rb:11:in `create'
-Started GET "/sessions" for 127.0.0.1 at 2017-09-19 22:02:15 -0500
-  
-ActionController::RoutingError (No route matches [GET] "/sessions"):
+ActionController::RoutingError (No route matches [PATCH] "/tickets-bill.1"):
   
 actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
 web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
@@ -626,19 +1451,9 @@ puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
 puma (3.10.0) lib/puma/server.rb:437:in `process_client'
 puma (3.10.0) lib/puma/server.rb:301:in `block in run'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 22:02:19 -0500
-Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cRpubdxBuiEUAMiEkXOgphEbL/+zAkKjzTJPiErAip4mukEUDUTizlElvF+Kpz35Rt/YFxbEkh55AJqD5Tg/aw==", "session"=>{"email"=>"n@d.f", "password"=>"[FILTERED]"}, "commit"=>"Save Session"}
-Completed 500 Internal Server Error in 3ms
-
-
+Started PATCH "/tickets-bill.1" for 127.0.0.1 at 2017-09-20 21:13:57 -0500
   
-NoMethodError (undefined method `[]' for nil:NilClass):
-  
-app/controllers/sessions_controller.rb:10:in `create'
-Started GET "/sessions" for 127.0.0.1 at 2017-09-19 22:03:03 -0500
-  
-ActionController::RoutingError (No route matches [GET] "/sessions"):
+ActionController::RoutingError (No route matches [PATCH] "/tickets-bill.1"):
   
 actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
 web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
@@ -667,48 +1482,1145 @@ puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
 puma (3.10.0) lib/puma/server.rb:437:in `process_client'
 puma (3.10.0) lib/puma/server.rb:301:in `block in run'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 22:03:06 -0500
-Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cRpubdxBuiEUAMiEkXOgphEbL/+zAkKjzTJPiErAip4mukEUDUTizlElvF+Kpz35Rt/YFxbEkh55AJqD5Tg/aw==", "session"=>{"email"=>"n@d.f", "password"=>"[FILTERED]"}, "commit"=>"Save Session"}
-  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Completed 500 Internal Server Error in 14ms (ActiveRecord: 1.0ms)
+Started GET "/tickets/1" for 127.0.0.1 at 2017-09-20 21:16:30 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 36ms (Views: 19.7ms | ActiveRecord: 1.1ms)
 
 
-  
-BCrypt::Errors::InvalidHash (invalid hash):
-  
-app/controllers/sessions_controller.rb:11:in `create'
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 22:03:32 -0500
-Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cRpubdxBuiEUAMiEkXOgphEbL/+zAkKjzTJPiErAip4mukEUDUTizlElvF+Kpz35Rt/YFxbEkh55AJqD5Tg/aw==", "session"=>{"email"=>"n@d.f", "password"=>"[FILTERED]"}, "commit"=>"Save Session"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Completed 500 Internal Server Error in 14ms (ActiveRecord: 1.0ms)
+Started PATCH "/ticket-bill/1" for 127.0.0.1 at 2017-09-20 21:17:21 -0500
+Processing by TicketsController#bill as HTML
+  Parameters: {"authenticity_token"=>"eugmXI53312XFmgQh7lKbaZuJuNTX0pEncnhBKTUda2/Dlpcr+ona2lb5crz7Bn/HfEUdGLNV3QP+g2WdRbwrw==", "id"=>"1"}
+No template found for TicketsController#bill, rendering head :no_content
+Completed 204 No Content in 63ms (ActiveRecord: 0.0ms)
 
 
-  
-BCrypt::Errors::InvalidHash (invalid hash):
-  
-app/controllers/sessions_controller.rb:12:in `create'
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 22:04:04 -0500
-Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cRpubdxBuiEUAMiEkXOgphEbL/+zAkKjzTJPiErAip4mukEUDUTizlElvF+Kpz35Rt/YFxbEkh55AJqD5Tg/aw==", "session"=>{"email"=>"n@d.f", "password"=>"[FILTERED]"}, "commit"=>"Save Session"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
-Completed 500 Internal Server Error in 16ms (ActiveRecord: 1.2ms)
+Started GET "/tickets/1" for 127.0.0.1 at 2017-09-20 21:17:56 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 37ms (Views: 22.4ms | ActiveRecord: 1.1ms)
 
 
-  
-BCrypt::Errors::InvalidHash (invalid hash):
-  
-app/controllers/sessions_controller.rb:12:in `create'
-Started POST "/sessions" for 127.0.0.1 at 2017-09-19 22:04:10 -0500
-Processing by SessionsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cRpubdxBuiEUAMiEkXOgphEbL/+zAkKjzTJPiErAip4mukEUDUTizlElvF+Kpz35Rt/YFxbEkh55AJqD5Tg/aw==", "session"=>{"email"=>"n@d.f", "password"=>"[FILTERED]"}, "commit"=>"Save Session"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "n@d.f"], ["LIMIT", 1]]
+Started GET "/tickets/1" for 127.0.0.1 at 2017-09-20 21:21:03 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 26ms (Views: 23.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/tickets/1" for 127.0.0.1 at 2017-09-20 21:21:38 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 35ms (Views: 19.7ms | ActiveRecord: 1.1ms)
+
+
+Started PATCH "/ticket-bill/1" for 127.0.0.1 at 2017-09-20 21:21:39 -0500
+Processing by TicketsController#bill as HTML
+  Parameters: {"authenticity_token"=>"doxHBa2/GPoMZl88WosrXhemgLoYZQTL+OvVeWuhnH2zajsFjCLgzPIr0uYu3njMrDmyLSn3Gftq2DnrumMZfw==", "id"=>"1"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
 Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.2ms)
 
 
   
-BCrypt::Errors::InvalidHash (invalid hash):
+NoMethodError (undefined method `-@' for nil:NilClass):
   
-app/controllers/sessions_controller.rb:12:in `create'
-  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+app/controllers/tickets_controller.rb:43:in `bill'
+Started PATCH "/ticket-bill/1" for 127.0.0.1 at 2017-09-20 21:23:05 -0500
+Processing by TicketsController#bill as HTML
+  Parameters: {"authenticity_token"=>"doxHBa2/GPoMZl88WosrXhemgLoYZQTL+OvVeWuhnH2zajsFjCLgzPIr0uYu3njMrDmyLSn3Gftq2DnrumMZfw==", "id"=>"1"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 1.1ms)
+
+
+  
+NoMethodError (undefined method `-@' for nil:NilClass):
+  
+app/controllers/tickets_controller.rb:41:in `bill'
+Started PATCH "/ticket-bill/1" for 127.0.0.1 at 2017-09-20 21:23:32 -0500
+Processing by TicketsController#bill as HTML
+  Parameters: {"authenticity_token"=>"doxHBa2/GPoMZl88WosrXhemgLoYZQTL+OvVeWuhnH2zajsFjCLgzPIr0uYu3njMrDmyLSn3Gftq2DnrumMZfw==", "id"=>"1"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 113ms (ActiveRecord: 1.0ms)
+
+
+  
+NameError (undefined local variable or method `hour_out' for #<TicketsController:0x007fbd124a0390>
+Did you mean?  hour_put):
+  
+app/controllers/tickets_controller.rb:43:in `bill'
+Started PATCH "/ticket-bill/1" for 127.0.0.1 at 2017-09-20 21:23:44 -0500
+Processing by TicketsController#bill as HTML
+  Parameters: {"authenticity_token"=>"doxHBa2/GPoMZl88WosrXhemgLoYZQTL+OvVeWuhnH2zajsFjCLgzPIr0uYu3njMrDmyLSn3Gftq2DnrumMZfw==", "id"=>"1"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 1.4ms)
+
+
+  
+NoMethodError (undefined method `-@' for nil:NilClass):
+  
+app/controllers/tickets_controller.rb:43:in `bill'
+Started PATCH "/ticket-bill/1" for 127.0.0.1 at 2017-09-20 21:24:06 -0500
+Processing by TicketsController#bill as HTML
+  Parameters: {"authenticity_token"=>"doxHBa2/GPoMZl88WosrXhemgLoYZQTL+OvVeWuhnH2zajsFjCLgzPIr0uYu3njMrDmyLSn3Gftq2DnrumMZfw==", "id"=>"1"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 72ms (ActiveRecord: 1.0ms)
+
+
+  
+NoMethodError (undefined method `hour_in' for #<TicketsController:0x007fbd124e3780>):
+  
+app/controllers/tickets_controller.rb:43:in `bill'
+Started PATCH "/ticket-bill/1" for 127.0.0.1 at 2017-09-20 21:24:31 -0500
+Processing by TicketsController#bill as HTML
+  Parameters: {"authenticity_token"=>"doxHBa2/GPoMZl88WosrXhemgLoYZQTL+OvVeWuhnH2zajsFjCLgzPIr0uYu3njMrDmyLSn3Gftq2DnrumMZfw==", "id"=>"1"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 1.2ms)
+
+
+  
+NoMethodError (undefined method `-@' for nil:NilClass):
+  
+app/controllers/tickets_controller.rb:44:in `bill'
+Started PATCH "/ticket-bill/1" for 127.0.0.1 at 2017-09-20 21:25:14 -0500
+Processing by TicketsController#bill as HTML
+  Parameters: {"authenticity_token"=>"doxHBa2/GPoMZl88WosrXhemgLoYZQTL+OvVeWuhnH2zajsFjCLgzPIr0uYu3njMrDmyLSn3Gftq2DnrumMZfw==", "id"=>"1"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.9ms)
+
+
+  
+NoMethodError (undefined method `-@' for nil:NilClass):
+  
+app/controllers/tickets_controller.rb:45:in `bill'
+Started PATCH "/ticket-bill/1" for 127.0.0.1 at 2017-09-20 21:25:39 -0500
+Processing by TicketsController#bill as HTML
+  Parameters: {"authenticity_token"=>"doxHBa2/GPoMZl88WosrXhemgLoYZQTL+OvVeWuhnH2zajsFjCLgzPIr0uYu3njMrDmyLSn3Gftq2DnrumMZfw==", "id"=>"1"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 1.1ms)
+
+
+  
+NoMethodError (undefined method `-@' for nil:NilClass):
+  
+app/controllers/tickets_controller.rb:45:in `bill'
+Started PATCH "/ticket-bill/1" for 127.0.0.1 at 2017-09-20 21:26:02 -0500
+  
+SyntaxError (/Users/cjc10/capital-junior-college/ruby-on-rails/parking/app/controllers/tickets_controller.rb:42: syntax error, unexpected tIVAR, expecting keyword_end
+in" + @ticket[:hour_in]@ticket[:hour_in]
+                              ^):
+  
+app/controllers/tickets_controller.rb:42: syntax error, unexpected tIVAR, expecting keyword_end
+Started PATCH "/ticket-bill/1" for 127.0.0.1 at 2017-09-20 21:26:18 -0500
+Processing by TicketsController#bill as HTML
+  Parameters: {"authenticity_token"=>"doxHBa2/GPoMZl88WosrXhemgLoYZQTL+OvVeWuhnH2zajsFjCLgzPIr0uYu3njMrDmyLSn3Gftq2DnrumMZfw==", "id"=>"1"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 1.3ms)
+
+
+  
+TypeError (no implicit conversion of ActiveSupport::TimeWithZone into String):
+  
+app/controllers/tickets_controller.rb:42:in `+'
+app/controllers/tickets_controller.rb:42:in `bill'
+Started PATCH "/ticket-bill/1" for 127.0.0.1 at 2017-09-20 21:26:59 -0500
+Processing by TicketsController#bill as HTML
+  Parameters: {"authenticity_token"=>"doxHBa2/GPoMZl88WosrXhemgLoYZQTL+OvVeWuhnH2zajsFjCLgzPIr0uYu3njMrDmyLSn3Gftq2DnrumMZfw==", "id"=>"1"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "tickets" SET "hour_out" = ?, "updated_at" = ? WHERE "tickets"."id" = ?[0m  [["hour_out", "2017-09-20 00:00:00"], ["updated_at", "2017-09-21 02:26:59.594814"], ["id", 1]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 3.4ms)
+
+
+  
+NoMethodError (undefined method `-' for "Hour in 2017-09-21 01:12:59 UTC":String
+Did you mean?  -@):
+  
+app/controllers/tickets_controller.rb:48:in `bill'
+Started GET "/tickets/1" for 127.0.0.1 at 2017-09-20 21:30:57 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 43ms (Views: 27.6ms | ActiveRecord: 1.2ms)
+
+
+Started DELETE "/tickets.1" for 127.0.0.1 at 2017-09-20 21:30:58 -0500
+  
+ActionController::RoutingError (No route matches [DELETE] "/tickets.1"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/tickets/1" for 127.0.0.1 at 2017-09-20 21:31:52 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 36ms (Views: 19.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/tickets/1" for 127.0.0.1 at 2017-09-20 21:32:07 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 35ms (Views: 19.9ms | ActiveRecord: 1.0ms)
+
+
+Started DELETE "/tickets/1" for 127.0.0.1 at 2017-09-20 21:32:08 -0500
+Processing by TicketsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"0A3+27LRWmXitoL8u0B8DIab9bM38xkZTTSzx9FCQgEV64Lbk0yiUxz7DybPFS+ePQTHJAZhBCnfB19VAIDHAw==", "id"=>"1"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (2.1ms)[0m  [1m[31mDELETE FROM "tickets" WHERE "tickets"."id" = ?[0m  [["id", 1]]
+No template found for TicketsController#destroy, rendering head :no_content
+Completed 204 No Content in 63ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/tickets/1" for 127.0.0.1 at 2017-09-20 21:33:12 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 404 Not Found in 6ms (ActiveRecord: 1.1ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Ticket with 'id'=1):
+  
+app/controllers/tickets_controller.rb:32:in `show'
+Started GET "/" for 127.0.0.1 at 2017-09-20 21:33:13 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered sessions/welcome.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 45ms (Views: 30.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/tickets/2" for 127.0.0.1 at 2017-09-20 21:33:15 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 23ms (Views: 19.4ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/tickets/2" for 127.0.0.1 at 2017-09-20 21:33:16 -0500
+Processing by TicketsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"sevPI91cN1d5VHfROgNfTAa2mN6UgQaPNVXE6KQsgLh0DbMj/MHPYYcZ+gtOVgzevSmqSaUTG7+nZih6de4Fug==", "id"=>"2"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (2.2ms)[0m  [1m[31mDELETE FROM "tickets" WHERE "tickets"."id" = ?[0m  [["id", 2]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 4ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 21:33:16 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered sessions/welcome.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 24ms (Views: 21.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/tickets/3" for 127.0.0.1 at 2017-09-20 21:33:17 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 23ms (Views: 20.7ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/tickets/3" for 127.0.0.1 at 2017-09-20 21:33:17 -0500
+Processing by TicketsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"NH5zkl/iGCOzMClLTbMNhskbrucXAWP1lDBcBwAET7nxmA+Sfn/gFU19pJE55l4UcoSccCaTfsUGA7CV0cbKuw==", "id"=>"3"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[31mDELETE FROM "tickets" WHERE "tickets"."id" = ?[0m  [["id", 3]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 3ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 21:33:17 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered sessions/welcome.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 25ms (Views: 21.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/tickets/4" for 127.0.0.1 at 2017-09-20 21:33:18 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 24ms (Views: 21.4ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/tickets/4" for 127.0.0.1 at 2017-09-20 21:33:19 -0500
+Processing by TicketsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Lv3oXHUPtrv8QfMFfTjHmiOtQWM/Hln83o6U5657fWXrG5RcVJJOjQIMft8JbZQImDJz9A6MRMxMvXh1f7n4Zw==", "id"=>"4"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (2.2ms)[0m  [1m[31mDELETE FROM "tickets" WHERE "tickets"."id" = ?[0m  [["id", 4]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 4ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 21:33:19 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered sessions/welcome.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 24ms (Views: 21.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/tickets/5" for 127.0.0.1 at 2017-09-20 21:33:19 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 23ms (Views: 20.2ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/tickets/5" for 127.0.0.1 at 2017-09-20 21:33:20 -0500
+Processing by TicketsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"T0dGPDq6Ep1YyZIzU+GV9WNt8nX3w+Q31Q93313+PcWKoTo8Gyfqq6aEH+kntMZn2PLA4sZR+QdHPJtNjDy4xw==", "id"=>"5"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (2.2ms)[0m  [1m[31mDELETE FROM "tickets" WHERE "tickets"."id" = ?[0m  [["id", 5]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 4ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 21:33:20 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered sessions/welcome.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 24ms (Views: 21.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/tickets/6" for 127.0.0.1 at 2017-09-20 21:33:21 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 22ms (Views: 19.7ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/tickets/6" for 127.0.0.1 at 2017-09-20 21:33:21 -0500
+Processing by TicketsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"5XK/jJM5YHAQnvfiLo0tHZH4xxwMEKsqX8tSqJxzaUoglMOMsqSYRu7Tejha2H6PKmf1iz2CthrN+L46TbHsSA==", "id"=>"6"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (1.6ms)[0m  [1m[31mDELETE FROM "tickets" WHERE "tickets"."id" = ?[0m  [["id", 6]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 3ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 21:33:21 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered sessions/welcome.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 24ms (Views: 20.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/tickets/new" for 127.0.0.1 at 2017-09-20 21:33:23 -0500
+Processing by TicketsController#new as HTML
+  Rendering tickets/new.html.erb within layouts/application
+  Rendered tickets/new.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 22ms (Views: 19.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/tickets" for 127.0.0.1 at 2017-09-20 21:33:34 -0500
+Processing by TicketsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NLIglMaIJuM1BbmZEkfbE8lq7l/ljsg0r7HU4tFFON8O1iZcGHCypzQziu5poZaT/9IpuGA4hPwpcicVOTjPzg==", "ticket"=>{"plate"=>"aas000", "vtype"=>"car"}, "commit"=>"Save Ticket"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tickets" ("plate", "vtype", "hour_in", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["plate", "aas000"], ["vtype", "car"], ["hour_in", "2017-09-20 00:00:00"], ["price", 10], ["created_at", "2017-09-21 02:33:34.211684"], ["updated_at", "2017-09-21 02:33:34.211684"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/tickets/7
+Completed 302 Found in 6ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/tickets/7" for 127.0.0.1 at 2017-09-20 21:33:34 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 23ms (Views: 20.0ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/ticket-bill/7" for 127.0.0.1 at 2017-09-20 21:33:37 -0500
+Processing by TicketsController#bill as HTML
+  Parameters: {"authenticity_token"=>"uRGP0kgUeoa6dJ2dzLe0x/JVSEYjPBI9REmVZVsTIEV89/PSaYmCsEQ5EEe44udVScp60RKuDw3Wenn3itGlRw==", "id"=>"7"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant TicketsController::DateTicket):
+  
+app/controllers/tickets_controller.rb:46:in `bill'
+Started PATCH "/ticket-bill/7" for 127.0.0.1 at 2017-09-20 21:33:51 -0500
+Processing by TicketsController#bill as HTML
+  Parameters: {"authenticity_token"=>"uRGP0kgUeoa6dJ2dzLe0x/JVSEYjPBI9REmVZVsTIEV89/PSaYmCsEQ5EEe44udVScp60RKuDw3Wenn3itGlRw==", "id"=>"7"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "tickets" SET "hour_out" = ?, "updated_at" = ? WHERE "tickets"."id" = ?[0m  [["hour_out", "2017-09-20 00:00:00"], ["updated_at", "2017-09-21 02:33:52.008368"], ["id", 7]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 2.6ms)
+
+
+  
+NoMethodError (undefined method `-' for "Hour in 2017-09-20 00:00:00 UTC":String
+Did you mean?  -@):
+  
+app/controllers/tickets_controller.rb:54:in `bill'
+Started PATCH "/ticket-bill/7" for 127.0.0.1 at 2017-09-20 21:34:29 -0500
+Processing by TicketsController#bill as HTML
+  Parameters: {"authenticity_token"=>"uRGP0kgUeoa6dJ2dzLe0x/JVSEYjPBI9REmVZVsTIEV89/PSaYmCsEQ5EEe44udVScp60RKuDw3Wenn3itGlRw==", "id"=>"7"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "tickets" SET "hour_out" = ?, "updated_at" = ? WHERE "tickets"."id" = ?[0m  [["hour_out", "2017-09-21 02:34:29.155245"], ["updated_at", "2017-09-21 02:34:29.156096"], ["id", 7]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 3.3ms)
+
+
+  
+NoMethodError (undefined method `-' for "Hour in 2017-09-20 00:00:00 UTC":String
+Did you mean?  -@):
+  
+app/controllers/tickets_controller.rb:54:in `bill'
+Started DELETE "/tickets/7" for 127.0.0.1 at 2017-09-20 21:34:31 -0500
+Processing by TicketsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"uRGP0kgUeoa6dJ2dzLe0x/JVSEYjPBI9REmVZVsTIEV89/PSaYmCsEQ5EEe44udVScp60RKuDw3Wenn3itGlRw==", "id"=>"7"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35mSQL (2.5ms)[0m  [1m[31mDELETE FROM "tickets" WHERE "tickets"."id" = ?[0m  [["id", 7]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 2.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 21:34:31 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered sessions/welcome.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 35ms (Views: 20.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/tickets/new" for 127.0.0.1 at 2017-09-20 21:34:32 -0500
+Processing by TicketsController#new as HTML
+  Rendering tickets/new.html.erb within layouts/application
+  Rendered tickets/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 23ms (Views: 21.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/tickets" for 127.0.0.1 at 2017-09-20 21:34:36 -0500
+Processing by TicketsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sC5Ief57FQAtaaGdR+6f45UHluMjpzgWf65rfOxhXQWKSk6xIIOBRCxfkuo8CNJjo79RBKYRdN75bZiLBByqFA==", "ticket"=>{"plate"=>"aaa000", "vtype"=>"car"}, "commit"=>"Save Ticket"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tickets" ("plate", "vtype", "hour_in", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["plate", "aaa000"], ["vtype", "car"], ["hour_in", "2017-09-21 02:34:36.144358"], ["price", 10], ["created_at", "2017-09-21 02:34:36.145124"], ["updated_at", "2017-09-21 02:34:36.145124"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/tickets/8
+Completed 302 Found in 5ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/tickets/8" for 127.0.0.1 at 2017-09-20 21:34:36 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 23ms (Views: 20.0ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/ticket-bill/8" for 127.0.0.1 at 2017-09-20 21:34:38 -0500
+Processing by TicketsController#bill as HTML
+  Parameters: {"authenticity_token"=>"GASHXbek5Rm3quJDRzqP8rTg6/V34XvHY6sCoPZt15bd4vtdljkdL0nnb5kzb9xgD3/ZYkZzZvfxmO4yJ69SlA==", "id"=>"8"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "tickets" SET "hour_out" = ?, "updated_at" = ? WHERE "tickets"."id" = ?[0m  [["hour_out", "2017-09-21 02:34:38.166039"], ["updated_at", "2017-09-21 02:34:38.166720"], ["id", 8]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 2.5ms)
+
+
+  
+NoMethodError (undefined method `-' for "Hour in 2017-09-21 02:34:36 UTC":String
+Did you mean?  -@):
+  
+app/controllers/tickets_controller.rb:54:in `bill'
+Started DELETE "/tickets/8" for 127.0.0.1 at 2017-09-20 21:35:07 -0500
+Processing by TicketsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"GASHXbek5Rm3quJDRzqP8rTg6/V34XvHY6sCoPZt15bd4vtdljkdL0nnb5kzb9xgD3/ZYkZzZvfxmO4yJ69SlA==", "id"=>"8"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (2.1ms)[0m  [1m[31mDELETE FROM "tickets" WHERE "tickets"."id" = ?[0m  [["id", 8]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 4ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 21:35:07 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered sessions/welcome.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 24ms (Views: 21.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/tickets/new" for 127.0.0.1 at 2017-09-20 21:35:08 -0500
+Processing by TicketsController#new as HTML
+  Rendering tickets/new.html.erb within layouts/application
+  Rendered tickets/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 23ms (Views: 20.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/tickets" for 127.0.0.1 at 2017-09-20 21:35:21 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TicketsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SYFM6G3uDSn5yAZSeYsJSLS1gYFRWNiObeLu83ilRz1z5UogsxaZbfj+NSUCbUTIgg1GZtTulEbrIR0EkNiwLA==", "ticket"=>{"plate"=>"aaa", "vtype"=>"car"}, "commit"=>"Save Ticket"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering tickets/new.html.erb within layouts/application
+  Rendered tickets/new.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 228ms (Views: 202.0ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/tickets" for 127.0.0.1 at 2017-09-20 21:35:24 -0500
+Processing by TicketsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JWMNVkV5xd+6iKLTUJNlLIjBBNTypFb/xRjuOfAmZUDghXFWZOQ96UTFLwkkxja+M142Q8M2S89XKwKrIeTgQg==", "ticket"=>{"plate"=>"aaa", "vtype"=>"car"}, "commit"=>"Save Ticket"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  Rendering tickets/new.html.erb within layouts/application
+  Rendered tickets/new.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 23ms (Views: 20.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 21:35:30 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered sessions/welcome.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 39ms (Views: 21.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/tickets/new" for 127.0.0.1 at 2017-09-20 21:35:33 -0500
+Processing by TicketsController#new as HTML
+  Rendering tickets/new.html.erb within layouts/application
+  Rendered tickets/new.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 21ms (Views: 19.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/tickets" for 127.0.0.1 at 2017-09-20 21:35:37 -0500
+Processing by TicketsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VaJAKWKd6zFBWAUZYYFDSz95QbTMi2BcD5OO5d2vTCxvxkbhvGV/dUBuNm4aZw7LCcGGU0k9LJSJUH0SNdK7PQ==", "ticket"=>{"plate"=>"aaa000", "vtype"=>"car"}, "commit"=>"Save Ticket"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tickets" ("plate", "vtype", "hour_in", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["plate", "aaa000"], ["vtype", "car"], ["hour_in", "2017-09-21 02:35:37.776352"], ["price", 10], ["created_at", "2017-09-21 02:35:37.777122"], ["updated_at", "2017-09-21 02:35:37.777122"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/tickets/9
+Completed 302 Found in 5ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/tickets/9" for 127.0.0.1 at 2017-09-20 21:35:37 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 23ms (Views: 19.9ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/ticket-bill/9" for 127.0.0.1 at 2017-09-20 21:35:39 -0500
+Processing by TicketsController#bill as HTML
+  Parameters: {"authenticity_token"=>"riClzxvMvO958wDzmPHDJc6XWHNHaZFeB7G5qqGAuSFrxtnPOlFE2Ye+jSnspJC3dQhq5Hb7jG6VglU4cEI8Iw==", "id"=>"9"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "tickets" SET "hour_out" = ?, "updated_at" = ? WHERE "tickets"."id" = ?[0m  [["hour_out", "2017-09-21 02:35:39.459087"], ["updated_at", "2017-09-21 02:35:39.459756"], ["id", 9]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 1.5ms)
+
+
+  
+NoMethodError (undefined method `-' for "Hour in 2017-09-21 02:35:37 UTC":String
+Did you mean?  -@):
+  
+app/controllers/tickets_controller.rb:54:in `bill'
+Started GET "/tickets/9" for 127.0.0.1 at 2017-09-20 21:37:27 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 225ms (Views: 199.3ms | ActiveRecord: 0.8ms)
+
+
+Started PATCH "/ticket-bill/9" for 127.0.0.1 at 2017-09-20 21:37:30 -0500
+Processing by TicketsController#bill as HTML
+  Parameters: {"authenticity_token"=>"Vs6XcU7dktbTjQCe3eHL4d5P8B9sQjKky5a+uQLLybaTKOtxb0Bq4C3AjUSptJhzZdDCiF3QL5RZpVIr0wlMtA==", "id"=>"9"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "tickets" SET "hour_out" = ?, "updated_at" = ? WHERE "tickets"."id" = ?[0m  [["hour_out", "2017-09-21 02:37:30.164664"], ["updated_at", "2017-09-21 02:37:30.165860"], ["id", 9]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 21:37:30 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL)[0m
+  Rendered sessions/welcome.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 35ms (Views: 21.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/tickets/9" for 127.0.0.1 at 2017-09-20 21:37:39 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 21ms (Views: 18.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/tickets/9" for 127.0.0.1 at 2017-09-20 21:38:27 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 21ms (Views: 18.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/tickets/9" for 127.0.0.1 at 2017-09-20 21:38:40 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 21ms (Views: 18.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/tickets/9" for 127.0.0.1 at 2017-09-20 21:38:45 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 21ms (Views: 18.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/tickets/9" for 127.0.0.1 at 2017-09-20 21:38:46 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 22ms (Views: 19.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 21:39:14 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.3ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL)[0m
+  Rendered sessions/welcome.html.erb within layouts/application (15.4ms)
+Completed 200 OK in 57ms (Views: 40.5ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/tickets/new" for 127.0.0.1 at 2017-09-20 21:39:15 -0500
+Processing by TicketsController#new as HTML
+  Rendering tickets/new.html.erb within layouts/application
+  Rendered tickets/new.html.erb within layouts/application (10.5ms)
+Completed 200 OK in 31ms (Views: 29.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/tickets" for 127.0.0.1 at 2017-09-20 21:39:20 -0500
+Processing by TicketsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dOmPNz0hjna5Q+NdgUc/n3tYyDhvFUD3nhBa5t7n0W1OjYn/49kaMrh10Cr6oXIfTeAP3+qjDD8Y06kRNpomfA==", "ticket"=>{"plate"=>"asd000", "vtype"=>"car"}, "commit"=>"Save Ticket"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tickets" ("plate", "vtype", "hour_in", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["plate", "asd000"], ["vtype", "car"], ["hour_in", "2017-09-21 02:39:20.318208"], ["price", 10], ["created_at", "2017-09-21 02:39:20.319136"], ["updated_at", "2017-09-21 02:39:20.319136"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/tickets/10
+Completed 302 Found in 5ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/tickets/10" for 127.0.0.1 at 2017-09-20 21:39:20 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 24ms (Views: 21.2ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/ticket-bill/10" for 127.0.0.1 at 2017-09-20 21:39:22 -0500
+Processing by TicketsController#bill as HTML
+  Parameters: {"authenticity_token"=>"wh7qkN7Gntrtr81894ka9qZMxU4fjuzGOMryZ8WS8HIH+JaQ/1tm7BPiQKaD3ElkHdP32S4c8faq+R71FFB1cA==", "id"=>"10"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "tickets" SET "hour_out" = ?, "updated_at" = ? WHERE "tickets"."id" = ?[0m  [["hour_out", "2017-09-21 02:39:22.254444"], ["updated_at", "2017-09-21 02:39:22.255054"], ["id", 10]]
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "tickets" SET "price" = ?, "updated_at" = ? WHERE "tickets"."id" = ?[0m  [["price", -69704], ["updated_at", "2017-09-21 02:39:22.259396"], ["id", 10]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 8ms (ActiveRecord: 3.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 21:39:22 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL)[0m
+  Rendered sessions/welcome.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 27ms (Views: 23.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/tickets/10" for 127.0.0.1 at 2017-09-20 21:39:23 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 21ms (Views: 18.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 21:39:26 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL)[0m
+  Rendered sessions/welcome.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 25ms (Views: 22.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/tickets/9" for 127.0.0.1 at 2017-09-20 21:39:26 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 23ms (Views: 20.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 21:39:28 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL)[0m
+  Rendered sessions/welcome.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 25ms (Views: 22.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/tickets/10" for 127.0.0.1 at 2017-09-20 21:39:29 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 23ms (Views: 20.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 21:39:29 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL)[0m
+  Rendered sessions/welcome.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 27ms (Views: 23.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 21:40:07 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL)[0m
+  Rendered sessions/welcome.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 25ms (Views: 22.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/tickets/10" for 127.0.0.1 at 2017-09-20 21:40:08 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 32ms (Views: 28.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/tickets/10" for 127.0.0.1 at 2017-09-20 21:40:15 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 21ms (Views: 18.4ms | ActiveRecord: 0.1ms)
+
+
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+Started GET "/tickets/10" for 127.0.0.1 at 2017-09-20 21:40:46 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 22ms (Views: 19.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/tickets/10" for 127.0.0.1 at 2017-09-20 21:41:08 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 34ms (Views: 18.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 21:41:11 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL)[0m
+  Rendered sessions/welcome.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 34ms (Views: 20.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/tickets/new" for 127.0.0.1 at 2017-09-20 21:41:12 -0500
+Processing by TicketsController#new as HTML
+  Rendering tickets/new.html.erb within layouts/application
+  Rendered tickets/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 22ms (Views: 19.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/tickets" for 127.0.0.1 at 2017-09-20 21:41:16 -0500
+Processing by TicketsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yS/qNJdHKRTzESK+5TzJEeZed61dja8kMImiqWotJLnzS+z8Sb+9UPInEcme2oSR0OawStg74+y2SlFeglDTqA==", "ticket"=>{"plate"=>"asd516", "vtype"=>"car"}, "commit"=>"Save Ticket"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tickets" ("plate", "vtype", "hour_in", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["plate", "asd516"], ["vtype", "car"], ["hour_in", "2017-09-21 02:41:16.500284"], ["price", 10], ["created_at", "2017-09-21 02:41:16.501104"], ["updated_at", "2017-09-21 02:41:16.501104"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/tickets/11
+Completed 302 Found in 5ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/tickets/11" for 127.0.0.1 at 2017-09-20 21:41:16 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mTicket Load (0.3ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 21ms (Views: 18.5ms | ActiveRecord: 0.3ms)
+
+
+Started PATCH "/ticket-bill/11" for 127.0.0.1 at 2017-09-20 21:41:18 -0500
+Processing by TicketsController#bill as HTML
+  Parameters: {"authenticity_token"=>"f0dv1wtwQRvCmLZTjrJuN0667WCut8KkYGWSjGE+WVe6oRPXKu25LTzVO4n65z2l9SXf958l35TyVn4esPzcVQ==", "id"=>"11"}
+  [1m[36mTicket Load (0.3ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "tickets" SET "hour_out" = ?, "updated_at" = ? WHERE "tickets"."id" = ?[0m  [["hour_out", "2017-09-21 02:41:18.622748"], ["updated_at", "2017-09-21 02:41:18.623358"], ["id", 11]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "tickets" SET "price" = ?, "updated_at" = ? WHERE "tickets"."id" = ?[0m  [["price", -76408], ["updated_at", "2017-09-21 02:41:18.626320"], ["id", 11]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 21:41:18 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL)[0m
+  Rendered sessions/welcome.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 25ms (Views: 21.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/tickets/new" for 127.0.0.1 at 2017-09-20 21:41:51 -0500
+Processing by TicketsController#new as HTML
+  Rendering tickets/new.html.erb within layouts/application
+  Rendered tickets/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 30ms (Views: 27.7ms)
+
+
+Started POST "/tickets" for 127.0.0.1 at 2017-09-20 21:41:54 -0500
+Processing by TicketsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MlK998OBmzNd9MdzQ10TQGRF6SQbEoKlWZNevOwq87EINrs/HXkPd1zC9AQ4u17AUv0uw56kzm3fUK1LBFcEoA==", "ticket"=>{"plate"=>"asd000", "vtype"=>"car"}, "commit"=>"Save Ticket"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tickets" ("plate", "vtype", "hour_in", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["plate", "asd000"], ["vtype", "car"], ["hour_in", "2017-09-21 02:41:54.261769"], ["price", 10], ["created_at", "2017-09-21 02:41:54.272728"], ["updated_at", "2017-09-21 02:41:54.272728"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/tickets/12
+Completed 302 Found in 17ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/tickets/12" for 127.0.0.1 at 2017-09-20 21:41:54 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mTicket Load (0.3ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 24ms (Views: 20.3ms | ActiveRecord: 0.3ms)
+
+
+Started PATCH "/ticket-bill/12" for 127.0.0.1 at 2017-09-20 21:41:55 -0500
+Processing by TicketsController#bill as HTML
+  Parameters: {"authenticity_token"=>"y1j6HCDq+Z04Iui8j16xYCPl+KXJpVcKGdFzR/iVfQEOvoYcAXcBq8ZvZWb7C+LymHrKMvg3SjqL4p/VKVf4Aw==", "id"=>"12"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "tickets" SET "hour_out" = ?, "updated_at" = ? WHERE "tickets"."id" = ?[0m  [["hour_out", "2017-09-21 02:41:55.422043"], ["updated_at", "2017-09-21 02:41:55.422691"], ["id", 12]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "tickets" SET "price" = ?, "updated_at" = ? WHERE "tickets"."id" = ?[0m  [["price", -41769], ["updated_at", "2017-09-21 02:41:55.426980"], ["id", 12]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 8ms (ActiveRecord: 3.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 21:41:55 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL)[0m
+  Rendered sessions/welcome.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 39ms (Views: 21.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/tickets/new" for 127.0.0.1 at 2017-09-20 21:43:15 -0500
+Processing by TicketsController#new as HTML
+  Rendering tickets/new.html.erb within layouts/application
+  Rendered tickets/new.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 24ms (Views: 22.4ms)
+
+
+Started POST "/tickets" for 127.0.0.1 at 2017-09-20 21:43:18 -0500
+Processing by TicketsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YTrIHA5Wz2CtWhGDHwTB/TOHrIzt6Esj2fW0gjCVGlxbXs7U0K5bJKxsIvRk4ox9BT9ra2heB+tfNkd12OjtTQ==", "ticket"=>{"plate"=>"asd345", "vtype"=>"car"}, "commit"=>"Save Ticket"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tickets" ("plate", "vtype", "hour_in", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["plate", "asd345"], ["vtype", "car"], ["hour_in", "2017-09-21 02:43:18.670885"], ["price", 10], ["created_at", "2017-09-21 02:43:18.682162"], ["updated_at", "2017-09-21 02:43:18.682162"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/tickets/13
+Completed 302 Found in 17ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/tickets/13" for 127.0.0.1 at 2017-09-20 21:43:18 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mTicket Load (0.3ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 23ms (Views: 20.0ms | ActiveRecord: 0.3ms)
+
+
+Started PATCH "/ticket-bill/13" for 127.0.0.1 at 2017-09-20 21:43:20 -0500
+Processing by TicketsController#bill as HTML
+  Parameters: {"authenticity_token"=>"iPrGE+Hqo+/S10JWJwz/Ym0sQY5zjQOc5B1v+xCxwWxNHLoTwHdb2Syaz4xTWazw1rNzGUIfHqx2LoNpwXNEbg==", "id"=>"13"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "tickets" SET "hour_out" = ?, "updated_at" = ? WHERE "tickets"."id" = ?[0m  [["hour_out", "2017-09-21 02:43:20.494648"], ["updated_at", "2017-09-21 02:43:20.495224"], ["id", 13]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "tickets" SET "price" = ?, "updated_at" = ? WHERE "tickets"."id" = ?[0m  [["price", 20], ["updated_at", "2017-09-21 02:43:20.498506"], ["id", 13]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 21:43:20 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL)[0m
+  Rendered sessions/welcome.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 35ms (Views: 22.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/tickets/new" for 127.0.0.1 at 2017-09-20 21:44:07 -0500
+Processing by TicketsController#new as HTML
+  Rendering tickets/new.html.erb within layouts/application
+  Rendered tickets/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 25ms (Views: 22.8ms)
+
+
+Started POST "/tickets" for 127.0.0.1 at 2017-09-20 21:44:16 -0500
+Processing by TicketsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bMuAnxBjlcZmIpjkXQKKYvxPFpjrfb2g8o0GvhJ0/DBWr4ZXzpsBgmcUq5Mm5MfiyvfRf27L8Wh0TvVJ+gkLIQ==", "ticket"=>{"plate"=>"aas321", "vtype"=>"car"}, "commit"=>"Save Ticket"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tickets" ("plate", "vtype", "hour_in", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["plate", "aas321"], ["vtype", "car"], ["hour_in", "2017-09-21 02:44:16.648203"], ["price", 10], ["created_at", "2017-09-21 02:44:16.659554"], ["updated_at", "2017-09-21 02:44:16.659554"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/tickets/14
+Completed 302 Found in 17ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/tickets/14" for 127.0.0.1 at 2017-09-20 21:44:16 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mTicket Load (0.3ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 32ms (Views: 28.1ms | ActiveRecord: 0.3ms)
+
+
+Started PATCH "/ticket-bill/14" for 127.0.0.1 at 2017-09-20 21:44:17 -0500
+Processing by TicketsController#bill as HTML
+  Parameters: {"authenticity_token"=>"PA9SVGfbXMVFZXxfMmmKWbzSmY24nkMGdwCsvk3BISH56S5URkak87so8YVGPNnLB02rGokMXjblM0AsnAOkIw==", "id"=>"14"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "tickets" SET "hour_out" = ?, "updated_at" = ? WHERE "tickets"."id" = ?[0m  [["hour_out", "2017-09-21 02:44:17.791679"], ["updated_at", "2017-09-21 02:44:17.792299"], ["id", 14]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "tickets" SET "price" = ?, "updated_at" = ? WHERE "tickets"."id" = ?[0m  [["price", 41165], ["updated_at", "2017-09-21 02:44:17.796483"], ["id", 14]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 9ms (ActiveRecord: 3.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 21:44:17 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL)[0m
+  Rendered sessions/welcome.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 38ms (Views: 23.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 21:46:33 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL)[0m
+  Rendered sessions/welcome.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 46ms (Views: 30.3ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/tickets/new" for 127.0.0.1 at 2017-09-20 21:46:37 -0500
+Processing by TicketsController#new as HTML
+  Rendering tickets/new.html.erb within layouts/application
+  Rendered tickets/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 22ms (Views: 20.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/tickets" for 127.0.0.1 at 2017-09-20 21:46:42 -0500
+Processing by TicketsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xp4iWNxoTt+fHT1uciyMVMSA81vmO2Nb1F/dIChB6Otk+iSQApDam54rDhkJysHU8jg0vGONL5NSnC7XwDwf+g==", "ticket"=>{"plate"=>"asd456", "vtype"=>"car"}, "commit"=>"Save Ticket"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tickets" ("plate", "vtype", "hour_in", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["plate", "asd456"], ["vtype", "car"], ["hour_in", "2017-09-21 02:46:42.514065"], ["price", 10], ["created_at", "2017-09-21 02:46:42.514917"], ["updated_at", "2017-09-21 02:46:42.514917"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/tickets/15
+Completed 302 Found in 5ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/tickets/15" for 127.0.0.1 at 2017-09-20 21:46:42 -0500
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/application
+  Rendered tickets/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 24ms (Views: 21.1ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/ticket-bill/15" for 127.0.0.1 at 2017-09-20 21:47:08 -0500
+Processing by TicketsController#bill as HTML
+  Parameters: {"authenticity_token"=>"RrUtGdlak5KL3DiEbizE2W37VTYA9ncXq8OXQbzpvBqDU1EZ+MdrpHWRtV4aeZdL1mRnoTFkaic58HvTbSs5GA==", "id"=>"15"}
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "tickets" SET "hour_out" = ?, "updated_at" = ? WHERE "tickets"."id" = ?[0m  [["hour_out", "2017-09-21 02:47:08.920325"], ["updated_at", "2017-09-21 02:47:08.920959"], ["id", 15]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "tickets" SET "price" = ?, "updated_at" = ? WHERE "tickets"."id" = ?[0m  [["price", 0], ["updated_at", "2017-09-21 02:47:08.925211"], ["id", 15]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 8ms (ActiveRecord: 3.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-20 21:47:08 -0500
+Processing by SessionsController#welcome as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/welcome.html.erb within layouts/application
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."hour_out" IS NULL[0m
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL) ORDER BY "tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE ("tickets"."hour_out" IS NOT NULL)[0m
+  Rendered sessions/welcome.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 25ms (Views: 21.8ms | ActiveRecord: 0.6ms)
+
+
