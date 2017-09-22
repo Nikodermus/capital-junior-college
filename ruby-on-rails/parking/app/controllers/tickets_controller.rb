@@ -1,15 +1,29 @@
 class TicketsController < ApplicationController
     def create
+        if Ticket.where(hour_out: nil).count > 9
+            flash[:error] = 'No spaces available, try later'
+            redirect_to root_path
+            return nil
+        end
+        @current_car = Ticket.where("hour_out is NULL AND plate = ?", ticketParams[:plate]).first
+        puts Ticket.where(plate: 'a3')
+
+        puts "Is this car in the parking? #{@current_car}"
+        if @current_car
+            flash[:error] = 'The vehicle has an open ticket'
+            redirect_to root_path
+            return nil
+        end
         @price = nil
         case ticketParams[:vtype]
             when 'car'
-                @price = 10
+                @price = 10000
             when 'bike'
-                @price = 7
+                @price = 7000
             when 'cycle'
-                @price = 6
+                @price = 6000
             when 'bigger'
-                @price = 20
+                @price = 20000
         end
         @ticket = Ticket.new(
             plate: ticketParams[:plate],
@@ -20,8 +34,8 @@ class TicketsController < ApplicationController
         if @ticket.save
             redirect_to ticket_path(@ticket)
         else
-            render new_ticket_path
             flash[:error] = "Invalid credentials"
+            render new_ticket_path
         end
     end
 

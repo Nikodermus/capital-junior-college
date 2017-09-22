@@ -2,17 +2,19 @@
 
 <%= link_to "Create ticket", new_ticket_path%> 
 
-<h2>Open tickets</h2>
-<ul>
-<%@open_tickets = Ticket.where(hour_out: nil)%>
-<%@open_tickets.each do |ticket|%>
-<li>
-    <%= link_to ticket[:plate].upcase, ticket_path(ticket) %>
-    </li>
+<%@open_tickets = Ticket.where(hour_out: nil).order(:plate)%>
+<%unless !@open_tickets || @open_tickets.first.blank?%>
+    <h2>Open tickets</h2>
+    <ul>
+        <%@open_tickets.each do |ticket|%>
+            <li>
+                <%= link_to ticket[:plate].upcase, ticket_path(ticket) %>
+            </li>
+        <%end%>
+    </ul>
 <%end%>
-</ul>
-<%@closed_tickets = Ticket.where.not(hour_out: nil)%>
-    <%unless @closed_tickets.first.blank?%>
+<%@closed_tickets = Ticket.where.not(hour_out: nil).order(:hour_out)%>
+    <%unless !@closed_tickets || @closed_tickets.first.blank?%>
     <h2>Closed tickets</h2>
     <ul>
     <%@closed_tickets.each do |ticket|%>

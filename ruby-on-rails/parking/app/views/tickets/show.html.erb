@@ -5,7 +5,7 @@
     <li>Hour in: <%= @ticket[:hour_in].to_formatted_s(:short)   %></li>
     <%if @ticket[:hour_out] %>
         <li>Hour out: <%= @ticket[:hour_out].to_formatted_s(:short)   %></li>    
-        <li>Cost: <%= @ticket[:price]%></li>
+        <li>Cost: $<%= @ticket[:price]%></li>
     <%end%>
 </ul>
 
