@@ -1,9 +1,13 @@
 <h1> Create your ticket </h1>
+<% @available_vehicles = []%>
+<% VehicleType.all.each do |x| %>
+    <%@available_vehicles << x.name  %>
+<% end %>
 <%= form_for :ticket, url: tickets_path, method: :post do |f|%>
     <%= f.label :plate %><br>
     <%= f.text_field :plate %><br>
     <%= f.label :vtype %><br>
-    <%= f.select :vtype, %w(car bike cycle truck bigger)%><br>
+    <%= f.select :vtype, @available_vehicles%><br>
     <%= f.submit %>
 <% end %>
 <%= link_to "Return", root_path%>

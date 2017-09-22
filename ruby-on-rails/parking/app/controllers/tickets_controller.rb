@@ -1,40 +1,28 @@
 class TicketsController < ApplicationController
     def create
+        puts "This is a test #{VehicleType.find_by(name: ticketParams[:vtype])[:id]}"
         if Ticket.where(hour_out: nil).count > 9
             flash[:error] = 'No spaces available, try later'
             redirect_to root_path
             return nil
         end
         @current_car = Ticket.where("hour_out is NULL AND plate = ?", ticketParams[:plate]).first
-        puts Ticket.where(plate: 'a3')
 
-        puts "Is this car in the parking? #{@current_car}"
         if @current_car
             flash[:error] = 'The vehicle has an open ticket'
             redirect_to root_path
             return nil
         end
-        @price = nil
-        case ticketParams[:vtype]
-            when 'car'
-                @price = 10000
-            when 'bike'
-                @price = 7000
-            when 'cycle'
-                @price = 6000
-            when 'bigger'
-                @price = 20000
-        end
+        
         @ticket = Ticket.new(
             plate: ticketParams[:plate],
-            vtype: ticketParams[:vtype],
+            vtype_id: VehicleType.find_by(name: ticketParams[:vtype])[:id],
             hour_in: DateTime.now,
-            price: @price
         )
         if @ticket.save
             redirect_to ticket_path(@ticket)
         else
-            flash[:error] = "Invalid credentials"
+            flash[:error] = "Invalid content #{@ticket.errors.messages}"
             render new_ticket_path
         end
     end
@@ -62,10 +50,10 @@ class TicketsController < ApplicationController
         )
         hour_in = @ticket[:hour_in]
         hour_out = @ticket[:hour_out]
-        @price = ( hour_out - hour_in)/3600 * @ticket[:price]
-        puts "Price is #{(hour_out - hour_in)/3600}"
+        puts "Price is #{VehicleType.find(@ticket[:vtype_id])[:price]}"
+        @price = ( hour_out - hour_in)/3600 * VehicleType.find(@ticket[:vtype_id])[:price]
         @ticket.update(
-            price: @price,
+            price: @price
         )
         redirect_to root_path
     end

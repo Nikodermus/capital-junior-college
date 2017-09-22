@@ -10,16 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170921004247) do
+ActiveRecord::Schema.define(version: 20170922021048) do
 
   create_table "tickets", force: :cascade do |t|
     t.string "plate"
     t.string "vtype"
     t.datetime "hour_in"
     t.datetime "hour_out"
-    t.integer "price"
+    t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "vtype_id"
+    t.index ["vtype_id"], name: "index_tickets_on_vtype_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -31,6 +33,15 @@ ActiveRecord::Schema.define(version: 20170921004247) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  create_table "vehicle_types", force: :cascade do |t|
+    t.string "name"
+    t.float "price"
+    t.integer "ticket_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ticket_id"], name: "index_vehicle_types_on_ticket_id"
   end
 
 end
